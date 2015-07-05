@@ -1,0 +1,116 @@
+.root {
+    -fx-background-color: white;
+    -fx-border-color: white;
+}
+
+.optionPane {
+    -fx-background-color: white;
+}
+
+.split-pane {
+    -fx-padding: 5px;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+.split-pane *.split-pane-divider {
+    -fx-padding: 0 1 0 1;
+    -fx-border-style: none;
+}
+
+.chart {
+    -fx-padding: 5px;
+    -fx-background-color: white;
+}
+
+.chart-content {
+    -fx-padding: 10px;
+    -fx-background-color: white;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+    -fx-padding: 10px;
+}
+
+.chart-legend-item-symbol {
+    -fx-background-radius: 5;
+}
+
+.chart-legend-item {
+    -fx-text-fill: black;
+}
+
+.chart-title {
+    -fx-text-fill: black;
+    -fx-font-size: 1.6em;
+}
+
+.axis-label {
+    -fx-text-fill: black;
+}
+
+.chart-plot-background {
+    -fx-background-color: white;
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: lightgrey;
+}
+
+.chart-horizontal-grid-lines {
+    -fx-stroke: lightgrey;
+}
+
+.axis {
+    -fx-tick-label-fill: black;
+}
+
+.axis-label {
+    -fx-text-fill: black;
+}
+
+.chart-series-line {
+    -fx-stroke-width: 2px;
+    -fx-effect: null;
+}
+
+.default-color0.chart-series-line {
+    -fx-stroke: blue;
+}
+
+.default-color0.chart-line-symbol {
+    -fx-background-color: blue, white;
+}
+
+.default-color1.chart-series-line {
+    -fx-stroke: forestgreen;
+}
+
+.default-color1.chart-line-symbol {
+    -fx-background-color: forestgreen, white;
+}
+
+.default-color2.chart-series-line {
+    -fx-stroke: darkturquoise;
+}
+
+.default-color2.chart-line-symbol {
+    -fx-background-color: darkturquoise, white;
+}
+
+.default-color3.chart-series-line {
+    -fx-stroke: blueviolet;
+}
+
+.default-color3.chart-line-symbol {
+    -fx-background-color: blueviolet, white;
+}
+
+.default-color4.chart-series-line {
+    -fx-stroke: goldenrod;
+}
+
+.default-color4.chart-line-symbol {
+    -fx-background-color: goldenrod, white;
+}
