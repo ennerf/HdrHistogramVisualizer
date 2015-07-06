@@ -49,13 +49,6 @@
             <version>18.0</version>
         </dependency>
 
-        <dependency>  <!-- Magic code generation -->
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.4</version>
-            <scope>provided</scope>
-        </dependency>
-
         <dependency> <!-- Useful JavaFX Controls -->
             <groupId>org.controlsfx</groupId>
             <artifactId>controlsfx</artifactId>
