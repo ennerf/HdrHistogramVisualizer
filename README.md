@@ -1,6 +1,8 @@
 HdrHistogramVisualizer
 ========
 
+[![Join the chat at https://gitter.im/ennerf/HdrHistogramVisualizer](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ennerf/HdrHistogramVisualizer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Visualizer for HdrHistogram and jHiccup logs
 
 * [HdrHistogram](https://github.com/HdrHistogram/HdrHistogram)
