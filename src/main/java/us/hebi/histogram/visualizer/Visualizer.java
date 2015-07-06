@@ -15,6 +15,8 @@ public class Visualizer extends Application {
     public void start(Stage stage) throws Exception {
         VisualizerView root = new VisualizerView();
         Scene scene = new Scene(root.getView());
+        stage.setMinWidth(500);
+        stage.setMinHeight(700);
         stage.setTitle("Histogram Visualizer");
         stage.setScene(scene);
         stage.show();
