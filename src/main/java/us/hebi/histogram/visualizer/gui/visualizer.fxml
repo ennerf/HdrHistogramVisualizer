@@ -10,7 +10,7 @@
    <children>
       <SplitPane dividerPositions="0.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="optionPane">
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="optionPane" SplitPane.resizableWithParent="false">
                <children>
                   <GridPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
@@ -18,10 +18,19 @@
                       <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -32,26 +41,41 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="%inputFileName" />
-                        <Label text="%exportFlags" GridPane.rowIndex="7" />
-                        <Label text="%rangeStartTimeSec" GridPane.rowIndex="3" />
-                        <Label text="%rangeEndTimeSec" GridPane.rowIndex="4" />
-                        <Label text="%percentilesOutputTicksPerHalf" GridPane.rowIndex="6" />
-                        <Label text="%outputValueUnitRatio" GridPane.rowIndex="5" />
-                        <Button fx:id="inputSelectButton" mnemonicParsing="false" onAction="#selectInputFile" prefWidth="140.0" text="%selectFile" GridPane.columnIndex="1" />
-                        <TextField fx:id="inputFileName" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-                        <TextField fx:id="seriesLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="rangeStartTimeSec" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="rangeEndTimeSec" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextField fx:id="outputValueUnitRatio" text="1E6" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField fx:id="percentilesOutputTicksPerHalf" text="5" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <CheckBox fx:id="csvFormatCheckbox" mnemonicParsing="false" text="%option.csv" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <CheckBox fx:id="clearChartCheckbox" mnemonicParsing="false" selected="true" text="%option.clear" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#loadLog" prefWidth="140.0" text="%loadLog" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                        <Button fx:id="saveImageButton" mnemonicParsing="false" onAction="#saveImage" prefWidth="140.0" text="%exportImage" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                        <Button fx:id="exportButton" mnemonicParsing="false" onAction="#exportLog" prefWidth="140.0" text="%exportLog" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                        <Label text="%chartFlags" GridPane.rowIndex="8" />
-                        <Label text="%seriesLabel" GridPane.rowIndex="2" />
+                        <Label text="%inputFileName" GridPane.rowIndex="1" />
+                        <Label text="%exportFlags" GridPane.rowIndex="8" />
+                        <Label text="%rangeStartTimeSec" GridPane.rowIndex="4" />
+                        <Label text="%rangeEndTimeSec" GridPane.rowIndex="5" />
+                        <Label text="%percentilesOutputTicksPerHalf" GridPane.rowIndex="7" />
+                        <Label text="%outputValueUnitRatio" GridPane.rowIndex="6" />
+                        <Button fx:id="inputSelectButton" mnemonicParsing="false" onAction="#selectInputFile" prefWidth="140.0" text="%selectFile" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="inputFileName" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                        <TextField fx:id="seriesLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="rangeStartTimeSec" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="rangeEndTimeSec" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="outputValueUnitRatio" text="1E6" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="percentilesOutputTicksPerHalf" text="5" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <CheckBox fx:id="csvFormatCheckbox" mnemonicParsing="false" text="%option.csv" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <CheckBox fx:id="clearChartCheckbox" mnemonicParsing="false" selected="true" text="%option.clear" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <Button fx:id="loadButton" mnemonicParsing="false" onAction="#loadLog" prefWidth="140.0" text="%loadLog" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <Button fx:id="saveImageButton" mnemonicParsing="false" onAction="#saveImage" prefWidth="140.0" text="%exportImage" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                        <Button fx:id="exportButton" mnemonicParsing="false" onAction="#exportLog" prefWidth="140.0" text="%exportLog" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                        <Label text="%chartFlags" GridPane.rowIndex="9" />
+                        <Label text="%seriesLabel" GridPane.rowIndex="3" />
+                        <Label styleClass="categoryLabel" text="%category.input" />
+                        <Label styleClass="categoryLabel" text="%category.intervalChart" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+                        <Label text="%chart.title" GridPane.rowIndex="14" />
+                        <TextField fx:id="intervalChartTitle" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                        <Label text="%chart.x" GridPane.rowIndex="15" />
+                        <Label text="%chart.y" GridPane.rowIndex="16" />
+                        <TextField fx:id="intervalChartX" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                        <TextField fx:id="intervalChartY" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+                        <Label styleClass="categoryLabel" text="%category.percentileChart" GridPane.columnSpan="2" GridPane.rowIndex="17" />
+                        <Label text="%chart.title" GridPane.rowIndex="18" />
+                        <Label text="%chart.y" GridPane.rowIndex="20" />
+                        <Label text="%chart.x" GridPane.rowIndex="19" />
+                        <TextField fx:id="percentileChartTitle" GridPane.columnIndex="1" GridPane.rowIndex="18" />
+                        <TextField fx:id="percentileChartX" GridPane.columnIndex="1" GridPane.rowIndex="19" />
+                        <TextField fx:id="percentileChartY" GridPane.columnIndex="1" GridPane.rowIndex="20" />
                      </children>
                   </GridPane>
                </children>

@@ -3,8 +3,22 @@
     -fx-border-color: white;
 }
 
+.button .text-field .text-area {
+    -fx-border-color: transparent;
+    -fx-background-radius: 0px;
+}
+
+.categoryLabel {
+    -fx-text-fill: black;
+    -fx-font-size: 1.4em;
+    -fx-font-weight: bold;
+    -fx-padding: 10 0 10 0;
+}
+
 .optionPane {
+    -fx-border-color: transparent;
     -fx-background-color: white;
+    -fx-padding: 5px;
 }
 
 .split-pane {

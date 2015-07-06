@@ -4,6 +4,9 @@ import com.google.common.io.Files;
 import com.google.common.primitives.Doubles;
 import com.google.common.primitives.Ints;
 import javafx.beans.Observable;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.Property;
+import javafx.beans.property.StringProperty;
 import javafx.collections.ListChangeListener;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -94,6 +97,24 @@ public class VisualizerPresenter {
 
     @FXML
     private SplitPane chartPane;
+
+    @FXML
+    private TextField percentileChartTitle;
+
+    @FXML
+    private TextField percentileChartX;
+
+    @FXML
+    private TextField percentileChartY;
+
+    @FXML
+    private TextField intervalChartTitle;
+
+    @FXML
+    private TextField intervalChartX;
+
+    @FXML
+    private TextField intervalChartY;
 
     @FXML
     void selectInputFile(ActionEvent event) {
@@ -247,9 +268,30 @@ public class VisualizerPresenter {
         });
 
         // Initialize charts
+        bindChartAxisLabels();
         initializeIntervalChartAxes();
         initializePercentileChartAxes();
 
+    }
+
+    void bindChartAxisLabels() {
+        bindChartAxisLabelWithDefault(intervalChart.titleProperty(), intervalChartTitle.textProperty());
+        bindChartAxisLabelWithDefault(intervalChart.getXAxis().labelProperty(), intervalChartX.textProperty());
+        bindChartAxisLabelWithDefault(intervalChart.getYAxis().labelProperty(), intervalChartY.textProperty());
+        bindChartAxisLabelWithDefault(percentileChart.titleProperty(), percentileChartTitle.textProperty());
+        bindChartAxisLabelWithDefault(percentileChart.getXAxis().labelProperty(), percentileChartX.textProperty());
+        bindChartAxisLabelWithDefault(percentileChart.getYAxis().labelProperty(), percentileChartY.textProperty());
+    }
+
+    void bindChartAxisLabelWithDefault(final Property<String> property, final StringProperty textField) {
+        // Default to the text that has been loaded from resources. Alternatively we could use
+        // resources.getString("<name>"), but that would unnecessarily duplicate the resource strings.
+        final String defaultText = property.getValue();
+        checkState(defaultText != null && !defaultText.isEmpty(), "Expected non-empty default");
+        property.bind(Bindings.createStringBinding(
+                () -> !textField.get().isEmpty() ? textField.get() : defaultText,
+                textField
+        ));
     }
 
     void initializeIntervalChartAxes() {
