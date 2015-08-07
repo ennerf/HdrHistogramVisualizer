@@ -8,7 +8,7 @@ Visualizer for HdrHistogram and jHiccup logs
 * [HdrHistogram](https://github.com/HdrHistogram/HdrHistogram)
 * [jHiccup](https://github.com/giltene/jHiccup) by [Azul](http://www.azulsystems.com/product/jHiccup)
 
-This tool can serve as an alternative to the jHiccupLogProcessor and jHiccupPlotter utilities that are bundled with jHiccup.
+This tool serves as an alternative to the jHiccupLogProcessor and jHiccupPlotter utilities that are bundled with jHiccup.
 
 <h2>Maven</h2>
 execute from commandline
@@ -34,8 +34,3 @@ create executable jar
 **Export Log** internally uses the same methods as jHiccupLogProcessor. The input options are mapped to the corresponding commandline options.
 
 **-csv** adds the '-csv' option to log export. It does not have an effect on the visualization.
-
-<h2>Notes</h2>
-
-I've primarily created this project for internal use and to experiment with charts in JavaFX, and have only implemented the functionality that I tend to need. If you find that you are missing a feature, just create an issue and I'll see whether I can add it.
-
