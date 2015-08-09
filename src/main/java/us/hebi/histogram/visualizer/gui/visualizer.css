@@ -8,11 +8,20 @@
     -fx-background-radius: 0px;
 }
 
-.categoryLabel {
+.categoryLabel, .titled-pane > *.title > *.text {
     -fx-text-fill: black;
-    -fx-font-size: 1.4em;
+    -fx-font-size: 1.2em;
     -fx-font-weight: bold;
     -fx-padding: 10 0 10 0;
+}
+
+.titled-pane > *.title, .titled-pane > *.content, .scroll-pane > *.viewport {
+    -fx-background-color: white;
+    -fx-border-color: null;
+}
+
+.titled-pane > *.content {
+    -fx-padding: 5 0 0 10;
 }
 
 .optionPane {
