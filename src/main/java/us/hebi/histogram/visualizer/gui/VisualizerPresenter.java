@@ -25,7 +25,7 @@ import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 import us.hebi.histogram.visualizer.parser.LogParser;
 import us.hebi.histogram.visualizer.parser.ParserConfiguration;
-import us.hebi.histogram.visualizer.parser.ParserConfiguration.*;
+import us.hebi.histogram.visualizer.parser.ParserConfiguration.ParserConfigurationBuilder;
 
 import javax.annotation.PostConstruct;
 import javax.imageio.ImageIO;
@@ -36,7 +36,6 @@ import java.util.ResourceBundle;
 
 import static com.google.common.base.Preconditions.*;
 import static java.lang.Double.*;
-import static us.hebi.histogram.visualizer.parser.ParserConfiguration.*;
 
 /**
  * @author Florian Enner < florian @ hebirobotics.com >
