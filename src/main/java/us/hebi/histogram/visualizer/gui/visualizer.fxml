@@ -12,9 +12,9 @@
          <items>
             <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="optionPane">
                <children>
-                  <Accordion maxHeight="1.7976931348623157E308" minHeight="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Accordion fx:id="menuAccordion" maxHeight="1.7976931348623157E308" minHeight="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <panes>
-                      <TitledPane animated="false" text="%category.input">
+                      <TitledPane fx:id="dataSelectionPane" animated="false" text="%category.input">
                         <content>
                               <ScrollPane maxHeight="1.7976931348623157E308" minHeight="20.0" minWidth="100.0" prefViewportHeight="200.0" prefViewportWidth="250.0">
                                  <content>

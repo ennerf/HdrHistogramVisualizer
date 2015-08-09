@@ -116,6 +116,12 @@ public class VisualizerPresenter {
     private TextField intervalChartY;
 
     @FXML
+    private Accordion menuAccordion;
+
+    @FXML
+    private TitledPane dataSelectionPane;
+
+    @FXML
     void selectInputFile(ActionEvent event) {
         File selectedFile = inputFileChooser.showOpenDialog(inputSelectButton.getScene().getWindow());
         if (selectedFile == null)
@@ -266,6 +272,9 @@ public class VisualizerPresenter {
         bindChartAxisLabels();
         initializeIntervalChartAxes();
         initializePercentileChartAxes();
+
+        // Show main pane on startup
+        menuAccordion.setExpandedPane(dataSelectionPane);
 
     }
 
