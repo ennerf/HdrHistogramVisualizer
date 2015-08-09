@@ -220,19 +220,15 @@ public class VisualizerPresenter {
         // Optional Parameters
         if (!outputValueUnitRatio.getText().isEmpty())
             config.outputValueUnitRatio(parseDouble(outputValueUnitRatio.getText()));
-        else config.outputValueUnitRatio(DEFAULT_OUTPUT_UNIT_RATIO);
 
         if (!rangeStartTimeSec.getText().isEmpty())
             config.startTimeSec(parseDouble(rangeStartTimeSec.getText()));
-        else config.startTimeSec(DEFAULT_START_TIME);
 
         if (!rangeEndTimeSec.getText().isEmpty())
             config.endTimeSec(parseDouble(rangeEndTimeSec.getText()));
-        else config.endTimeSec(DEFAULT_END_TIME);
 
         if (!percentilesOutputTicksPerHalf.getText().isEmpty())
             config.percentilesOutputTicksPerHalf(Integer.parseInt(percentilesOutputTicksPerHalf.getText()));
-        else config.percentilesOutputTicksPerHalf(DEFAULT_PERCENTILES_TICKS_PER_HALF);
 
         config.logFormatCsv(csvFormatCheckbox.isSelected());
 

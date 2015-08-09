@@ -55,12 +55,6 @@ public class ParserConfiguration {
 
     }
 
-    public static final double DEFAULT_START_TIME = 0;
-    public static final double DEFAULT_END_TIME = Double.MAX_VALUE;
-    public static final double DEFAULT_OUTPUT_UNIT_RATIO = 1E6;
-    public static final int DEFAULT_PERCENTILES_TICKS_PER_HALF = 5;
-    public static final boolean DEFAULT_CSV_FORMAT = false;
-
     public File getInputFile() {
         return this.inputFile;
     }
@@ -87,11 +81,13 @@ public class ParserConfiguration {
 
     public static class ParserConfigurationBuilder {
         private File inputFile;
-        private double startTimeSec = DEFAULT_START_TIME;
-        private double endTimeSec = DEFAULT_END_TIME;
-        private double outputValueUnitRatio = DEFAULT_OUTPUT_UNIT_RATIO;
-        private int percentilesOutputTicksPerHalf = DEFAULT_PERCENTILES_TICKS_PER_HALF;
-        private boolean logFormatCsv = DEFAULT_CSV_FORMAT;
+
+        // default values
+        private double startTimeSec = 0;
+        private double endTimeSec = Double.MAX_VALUE;
+        private double outputValueUnitRatio = 1E6;
+        private int percentilesOutputTicksPerHalf = 5;
+        private boolean logFormatCsv = false;
 
         ParserConfigurationBuilder() {
         }
