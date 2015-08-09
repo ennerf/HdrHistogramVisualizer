@@ -16,8 +16,8 @@ public class Visualizer extends Application {
         VisualizerView root = new VisualizerView();
         Scene scene = new Scene(root.getView());
         stage.setMinWidth(500);
-        stage.setMinHeight(700);
-        stage.setTitle("Histogram Visualizer");
+        stage.setMinHeight(550);
+        stage.setTitle("HdrHistogram Visualizer");
         stage.setScene(scene);
         stage.show();
     }
