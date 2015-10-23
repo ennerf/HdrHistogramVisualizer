@@ -1,5 +1,6 @@
 package us.hebi.histogram.visualizer;
 
+import com.airhacks.afterburner.injection.Injector;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -20,6 +21,11 @@ public class Visualizer extends Application {
         stage.setTitle("HdrHistogram Visualizer");
         stage.setScene(scene);
         stage.show();
+    }
+
+    @Override
+    public void stop(){
+        Injector.forgetAll();
     }
 
     public static void main(String[] args) {
