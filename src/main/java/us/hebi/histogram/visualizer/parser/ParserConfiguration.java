@@ -17,14 +17,16 @@ public class ParserConfiguration {
     final double endTimeSec;
     final double outputValueUnitRatio;
     final int percentilesOutputTicksPerHalf;
+    final int aggregateIntervalSamples;
     final boolean logFormatCsv;
 
-    ParserConfiguration(File inputFile, double startTimeSec, double endTimeSec, double outputValueUnitRatio, int percentilesOutputTicksPerHalf, boolean logFormatCsv) {
+    ParserConfiguration(File inputFile, double startTimeSec, double endTimeSec, double outputValueUnitRatio, int percentilesOutputTicksPerHalf, int aggregateIntervalSamples, boolean logFormatCsv) {
         this.inputFile = checkNotNull(inputFile);
         this.startTimeSec = startTimeSec;
         this.endTimeSec = endTimeSec;
         this.outputValueUnitRatio = outputValueUnitRatio;
         this.percentilesOutputTicksPerHalf = percentilesOutputTicksPerHalf;
+        this.aggregateIntervalSamples = aggregateIntervalSamples;
         this.logFormatCsv = logFormatCsv;
     }
 
@@ -75,6 +77,10 @@ public class ParserConfiguration {
         return this.percentilesOutputTicksPerHalf;
     }
 
+    public int getAggregateIntervalSamples() {
+        return this.aggregateIntervalSamples;
+    }
+
     public boolean isLogFormatCsv() {
         return this.logFormatCsv;
     }
@@ -87,6 +93,7 @@ public class ParserConfiguration {
         private double endTimeSec = Double.MAX_VALUE;
         private double outputValueUnitRatio = 1E6;
         private int percentilesOutputTicksPerHalf = 5;
+        private int aggregateIntervalSamples = 1;
         private boolean logFormatCsv = false;
 
         ParserConfigurationBuilder() {
@@ -117,13 +124,18 @@ public class ParserConfiguration {
             return this;
         }
 
+        public ParserConfiguration.ParserConfigurationBuilder aggregateMaximaSamples(int aggregateMaximaSamples) {
+            this.aggregateIntervalSamples = aggregateMaximaSamples;
+            return this;
+        }
+
         public ParserConfiguration.ParserConfigurationBuilder logFormatCsv(boolean logFormatCsv) {
             this.logFormatCsv = logFormatCsv;
             return this;
         }
 
         public ParserConfiguration build() {
-            return new ParserConfiguration(inputFile, startTimeSec, endTimeSec, outputValueUnitRatio, percentilesOutputTicksPerHalf, logFormatCsv);
+            return new ParserConfiguration(inputFile, startTimeSec, endTimeSec, outputValueUnitRatio, percentilesOutputTicksPerHalf, aggregateIntervalSamples, logFormatCsv);
         }
 
         public String toString() {

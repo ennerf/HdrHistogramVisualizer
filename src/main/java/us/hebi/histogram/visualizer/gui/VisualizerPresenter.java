@@ -74,6 +74,9 @@ public class VisualizerPresenter {
     private TextField percentilesOutputTicksPerHalf;
 
     @FXML
+    private TextField aggregateIntervalSamples;
+
+    @FXML
     private TextField outputValueUnitRatio;
 
     @FXML
@@ -235,6 +238,9 @@ public class VisualizerPresenter {
         if (!percentilesOutputTicksPerHalf.getText().isEmpty())
             config.percentilesOutputTicksPerHalf(Integer.parseInt(percentilesOutputTicksPerHalf.getText()));
 
+        if (!aggregateIntervalSamples.getText().isEmpty())
+            config.aggregateMaximaSamples(Integer.parseInt(aggregateIntervalSamples.getText()));
+
         config.logFormatCsv(csvFormatCheckbox.isSelected());
 
         // Combine
@@ -257,6 +263,7 @@ public class VisualizerPresenter {
         validationSupport.registerValidator(rangeEndTimeSec, false, optionalDoubleValidator);
         validationSupport.registerValidator(outputValueUnitRatio, false, optionalDoubleValidator);
         validationSupport.registerValidator(percentilesOutputTicksPerHalf, false, optionalIntValidator);
+        validationSupport.registerValidator(aggregateIntervalSamples, false, optionalIntValidator);
 
         // Block buttons if inputs are incorrect
         loadButton.disableProperty().bind(validationSupport.invalidProperty());
