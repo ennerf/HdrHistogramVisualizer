@@ -3,7 +3,7 @@
     -fx-border-color: white;
 }
 
-.button, .text-field, .text-area {
+.button, .text-field, .text-area, .choice-box {
     -fx-border-color: transparent;
     -fx-background-radius: 0px;
 }

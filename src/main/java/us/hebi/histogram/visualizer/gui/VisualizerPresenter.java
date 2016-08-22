@@ -5,6 +5,7 @@ import com.google.common.primitives.Doubles;
 import com.google.common.primitives.Ints;
 import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
+import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.Property;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ListChangeListener;
@@ -96,6 +97,9 @@ public class VisualizerPresenter {
 
     @FXML
     private LineChart<Number, Number> intervalChart;
+
+    @FXML
+    private ChoiceBox<IntervalTickFormatter> intervalXTickLabel;
 
     @FXML
     private SplitPane chartPane;
@@ -306,7 +310,18 @@ public class VisualizerPresenter {
     }
 
     void initializeIntervalChartAxes() {
-        ((NumberAxis) intervalChart.getXAxis()).setForceZeroInRange(false);
+        final NumberAxis xAxis = (NumberAxis) intervalChart.getXAxis();
+        xAxis.setForceZeroInRange(false);
+
+        // Bind X Tick label formatter to choice-box
+        intervalXTickLabel.getItems().addAll(IntervalTickFormatter.values());
+        intervalXTickLabel.getSelectionModel().select(0);
+        ObjectBinding<StringConverter<Number>> intervalXLabelConverter = Bindings.createObjectBinding(
+                () -> intervalXTickLabel.getSelectionModel().getSelectedItem().getConverter(),
+                intervalXTickLabel.getSelectionModel().selectedItemProperty()
+        );
+        xAxis.tickLabelFormatterProperty().bind(intervalXLabelConverter);
+
     }
 
     void initializePercentileChartAxes() {
