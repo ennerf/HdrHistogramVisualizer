@@ -16,12 +16,12 @@
 
 .chart-title {
     -fx-text-fill: black;
-    -fx-font-weight: none;
+    -fx-font-weight: normal;
     -fx-font-size: 1.2em;
 }
 
 .axis-label {
-	-fx-font-weight: none;
+	-fx-font-weight: normal;
 	-fx-font-size: 1em;
 }
 
