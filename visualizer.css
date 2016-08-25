@@ -1,0 +1,80 @@
+/* --- Axes and Labels --- */
+/*
+.chart {
+    -fx-font-size: 1em;
+}
+
+.chart-content {
+    -fx-padding: 10px;
+	-fx-font-size: 1em;
+}
+
+.chart-legend {
+    -fx-padding: 10px;
+	-fx-font-size: 1em;
+}
+
+.chart-title {
+    -fx-text-fill: black;
+    -fx-font-weight: none;
+    -fx-font-size: 1.2em;
+}
+
+.axis-label {
+	-fx-font-weight: none;
+	-fx-font-size: 1em;
+}
+
+.chart-vertical-grid-lines, .chart-horizontal-grid-lines {
+    -fx-stroke: lightgrey;
+}
+
+*/
+
+/* --- Chart Lines --- */
+/*
+.chart-series-line {
+    -fx-stroke-width: 2px;
+    -fx-effect: null;
+}
+
+.default-color0.chart-series-line {
+    -fx-stroke: blue;
+}
+
+.default-color0.chart-line-symbol {
+    -fx-background-color: blue, white;
+}
+
+.default-color1.chart-series-line {
+    -fx-stroke: forestgreen;
+}
+
+.default-color1.chart-line-symbol {
+    -fx-background-color: forestgreen, white;
+}
+
+.default-color2.chart-series-line {
+    -fx-stroke: darkturquoise;
+}
+
+.default-color2.chart-line-symbol {
+    -fx-background-color: darkturquoise, white;
+}
+
+.default-color3.chart-series-line {
+    -fx-stroke: blueviolet;
+}
+
+.default-color3.chart-line-symbol {
+    -fx-background-color: blueviolet, white;
+}
+
+.default-color4.chart-series-line {
+    -fx-stroke: goldenrod;
+}
+
+.default-color4.chart-line-symbol {
+    -fx-background-color: goldenrod, white;
+}
+*/
