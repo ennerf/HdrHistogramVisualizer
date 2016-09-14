@@ -7,6 +7,7 @@ import org.HdrHistogram.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,6 +104,30 @@ public class LogParser {
             intervalData.add(new Data<>(x, y));
 
         }
+    }
+
+    static void outputHistogramValuesAsCsv(AbstractHistogram histogram, PrintStream out) {
+
+        out.print("valueIteratedTo,");
+        out.print("countAtValueIteratedTo,");
+        out.print("totalCountToThisValue,");
+        out.print("totalValueToThisValue\n");
+
+        AllValuesIterator percentileIterator = new AllValuesIterator(histogram);
+        while (percentileIterator.hasNext()) {
+            HistogramIterationValue next = percentileIterator.next();
+
+            out.print(next.getValueIteratedTo());
+            out.print(",");
+            out.print(next.getCountAtValueIteratedTo());
+            out.print(",");
+            out.print(next.getTotalCountToThisValue());
+            out.print(",");
+            out.print(next.getTotalValueToThisValue());
+            out.print(",\n");
+
+        }
+
     }
 
     private void addPercentileData(EncodableHistogram accumulatedHistogram, ParserConfiguration config) {
