@@ -51,6 +51,26 @@ public class LogParserTest {
     }
 
     @Test
+    public void parseSingleLog_aggregated_win() throws Exception {
+        ParserConfiguration config = ParserConfiguration.builder()
+                .inputFile(getTestLog("jHiccup-win.hlog"))
+                .outputValueUnitRatio(1E6)
+                .percentilesOutputTicksPerHalf(5)
+                .aggregateMaximaSamples(7)
+                .build();
+
+        LogParser parser = new LogParser();
+        parser.parseLog(config);
+
+        parser.getIntervalData(data);
+        assertEquals(37, data.size());
+        assertEqualsXY(1.09800, 1.639423, data.get(0));
+        assertEqualsXY(162.098, 1.508351, data.get(23));
+        assertEqualsXY(253.098, 1.491967, data.get(data.size() - 1));
+
+    }
+
+    @Test
     public void parseSingleLog_osx() throws Exception {
         ParserConfiguration config = ParserConfiguration.builder()
                 .inputFile(getTestLog("jHiccup-osx.hlog"))
