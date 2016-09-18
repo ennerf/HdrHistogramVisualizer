@@ -31,7 +31,8 @@
 
     <properties>
         <main.class>us.hebi.histogram.visualizer.Visualizer</main.class>
-        <javac.target.version>1.8</javac.target.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -111,14 +112,6 @@
                     <includePluginDependencies>true</includePluginDependencies>
                     <mainClass>${main.class}</mainClass>
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
-                </configuration>
-            </plugin>
-
-            <plugin> <!-- Required Java version -->
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${javac.target.version}</source>
-                    <target>${javac.target.version}</target>
                 </configuration>
             </plugin>
         </plugins>
