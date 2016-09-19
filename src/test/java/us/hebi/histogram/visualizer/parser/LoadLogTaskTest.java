@@ -144,6 +144,23 @@ public class LoadLogTaskTest {
 
     }
 
+    @Test
+    public void parseTaggedLog_selector() throws Exception {
+
+        ParserConfiguration config = ParserConfiguration.builder()
+                .inputFile(getTestLog("jHiccup-2tags.hlog"))
+                .outputValueUnitRatio(1E6)
+                .percentilesOutputTicksPerHalf(5)
+                .selectedTags("w.*n")
+                .build();
+
+        LoadLogTask loadLogTask = new LoadLogTask(config);
+        Collection<HistogramAccumulator> accumulators = loadLogTask.call();
+        assertEquals(1, accumulators.size());
+        assertEquals("win", accumulators.iterator().next().getTag());
+
+    }
+
     private void assertEqualsXY(double expectedX, double expectedY, XYChart.Data<Number, Number> actual) {
         assertEquals("x value", expectedX, actual.getXValue().doubleValue(), 1E-6);
         assertEquals("y value", expectedY, actual.getYValue().doubleValue(), 1E-6);

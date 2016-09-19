@@ -37,6 +37,7 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
                                           <Label text="%inputFileName" />
@@ -45,7 +46,10 @@
                                           <Label text="%outputValueUnitRatio" GridPane.rowIndex="5" />
                                           <Label text="%percentilesOutputTicksPerHalf" GridPane.rowIndex="6" />
                                           <Label text="%aggregateIntervalSamples" GridPane.rowIndex="7" />
-                                          <Label text="%exportFlags" GridPane.rowIndex="8" />
+                                          <Label text="%tagSelector" GridPane.rowIndex="8" />
+                                          <Label text="%exportFlags" GridPane.rowIndex="9" />
+                                          <Label text="%chartFlags" GridPane.rowIndex="10" />
+                                          <Label text="%seriesLabel" GridPane.rowIndex="11" />
                                           <Button fx:id="inputSelectButton" mnemonicParsing="false" onAction="#selectInputFile" prefWidth="140.0" text="%selectFile" GridPane.columnIndex="1" />
                                           <TextField fx:id="inputFileName" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                                           <TextField fx:id="seriesLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -54,13 +58,12 @@
                                           <TextField fx:id="outputValueUnitRatio" text="1E6" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                           <TextField fx:id="percentilesOutputTicksPerHalf" text="5" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                           <TextField fx:id="aggregateIntervalSamples" text="1" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                          <CheckBox fx:id="csvFormatCheckbox" mnemonicParsing="false" text="%option.csv" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                          <CheckBox fx:id="clearChartCheckbox" mnemonicParsing="false" selected="true" text="%option.clear" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                          <Button fx:id="loadButton" mnemonicParsing="false" onAction="#loadLog" prefWidth="140.0" text="%loadLog" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                          <Button fx:id="saveImageButton" mnemonicParsing="false" onAction="#saveImage" prefWidth="140.0" text="%exportImage" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                                          <Button fx:id="exportButton" mnemonicParsing="false" onAction="#exportLog" prefWidth="140.0" text="%exportLog" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                                          <Label text="%chartFlags" GridPane.rowIndex="9" />
-                                          <Label text="%seriesLabel" GridPane.rowIndex="2" />
+                                          <TextField fx:id="tagSelector" text=".*" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                          <CheckBox fx:id="csvFormatCheckbox" mnemonicParsing="false" text="%option.csv" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                          <CheckBox fx:id="clearChartCheckbox" mnemonicParsing="false" selected="true" text="%option.clear" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                          <Button fx:id="loadButton" mnemonicParsing="false" onAction="#loadLog" prefWidth="140.0" text="%loadLog" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                          <Button fx:id="saveImageButton" mnemonicParsing="false" onAction="#saveImage" prefWidth="140.0" text="%exportImage" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                          <Button fx:id="exportButton" mnemonicParsing="false" onAction="#exportLog" prefWidth="140.0" text="%exportLog" GridPane.columnIndex="1" GridPane.rowIndex="13" />
                                        </children>
                                     </GridPane>
                                  </content>

@@ -3,6 +3,7 @@ package us.hebi.histogram.visualizer.parser;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static com.google.common.base.Preconditions.*;
 
@@ -19,8 +20,13 @@ public class ParserConfiguration {
     final int percentilesOutputTicksPerHalf;
     final int aggregateIntervalSamples;
     final boolean logFormatCsv;
+    final String selectedTags;
 
-    ParserConfiguration(File inputFile, double startTimeSec, double endTimeSec, double outputValueUnitRatio, int percentilesOutputTicksPerHalf, int aggregateIntervalSamples, boolean logFormatCsv) {
+    public String getSelectedTags() {
+        return selectedTags;
+    }
+
+    ParserConfiguration(File inputFile, double startTimeSec, double endTimeSec, double outputValueUnitRatio, int percentilesOutputTicksPerHalf, int aggregateIntervalSamples, boolean logFormatCsv, String selectedTags) {
         this.inputFile = checkNotNull(inputFile);
         this.startTimeSec = startTimeSec;
         this.endTimeSec = endTimeSec;
@@ -28,6 +34,7 @@ public class ParserConfiguration {
         this.percentilesOutputTicksPerHalf = percentilesOutputTicksPerHalf;
         this.aggregateIntervalSamples = aggregateIntervalSamples;
         this.logFormatCsv = logFormatCsv;
+        this.selectedTags = selectedTags;
     }
 
     public static ParserConfigurationBuilder builder() {
@@ -95,6 +102,7 @@ public class ParserConfiguration {
         private int percentilesOutputTicksPerHalf = 5;
         private int aggregateIntervalSamples = 1;
         private boolean logFormatCsv = false;
+        private String selectedTags = ".*";
 
         ParserConfigurationBuilder() {
         }
@@ -134,8 +142,13 @@ public class ParserConfiguration {
             return this;
         }
 
+        public ParserConfiguration.ParserConfigurationBuilder selectedTags(String selectedTags) {
+            this.selectedTags = selectedTags;
+            return this;
+        }
+
         public ParserConfiguration build() {
-            return new ParserConfiguration(inputFile, startTimeSec, endTimeSec, outputValueUnitRatio, percentilesOutputTicksPerHalf, aggregateIntervalSamples, logFormatCsv);
+            return new ParserConfiguration(inputFile, startTimeSec, endTimeSec, outputValueUnitRatio, percentilesOutputTicksPerHalf, aggregateIntervalSamples, logFormatCsv, selectedTags);
         }
 
         public String toString() {

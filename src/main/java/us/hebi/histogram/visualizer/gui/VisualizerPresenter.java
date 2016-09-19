@@ -1,5 +1,6 @@
 package us.hebi.histogram.visualizer.gui;
 
+import com.google.common.base.Strings;
 import com.google.common.io.Files;
 import com.google.common.primitives.Doubles;
 import com.google.common.primitives.Ints;
@@ -37,6 +38,8 @@ import javax.inject.Inject;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import static com.google.common.base.Preconditions.*;
 import static java.lang.Double.*;
@@ -94,6 +97,9 @@ public class VisualizerPresenter {
 
     @FXML
     private TextField rangeStartTimeSec;
+
+    @FXML
+    private TextField tagSelector;
 
     @FXML
     private LineChart<Number, Number> percentileChart;
@@ -272,6 +278,10 @@ public class VisualizerPresenter {
         if (!aggregateIntervalSamples.getText().isEmpty())
             config.aggregateMaximaSamples(Integer.parseInt(aggregateIntervalSamples.getText()));
 
+        if (!tagSelector.getText().isEmpty()) {
+            config.selectedTags(tagSelector.getText());
+        }
+
         config.logFormatCsv(csvFormatCheckbox.isSelected());
 
         // Combine
@@ -288,6 +298,18 @@ public class VisualizerPresenter {
                 str != null && !str.isEmpty() && Ints.tryParse(str) == null);
         Validator<String> requiredFileValidator = (c, str) -> ValidationResult.fromErrorIf(c, "Expected file",
                 str == null || str.isEmpty()); // TODO: check whether file is well formed and exists?
+        Validator<String> optionalRegexValidator = (c, str) -> {
+            boolean valid = Strings.isNullOrEmpty(str);
+            if (!valid) {
+                try {
+                    Pattern.compile(str);
+                    valid = true;
+                } catch (PatternSyntaxException pse) {
+                    valid = false;
+                }
+            }
+            return ValidationResult.fromErrorIf(c, "Expected regex", !valid);
+        };
 
         validationSupport.registerValidator(inputFileName, false, requiredFileValidator); // required = true renders odd
         validationSupport.registerValidator(rangeStartTimeSec, false, optionalDoubleValidator);
@@ -295,6 +317,7 @@ public class VisualizerPresenter {
         validationSupport.registerValidator(outputValueUnitRatio, false, optionalDoubleValidator);
         validationSupport.registerValidator(percentilesOutputTicksPerHalf, false, optionalIntValidator);
         validationSupport.registerValidator(aggregateIntervalSamples, false, optionalIntValidator);
+        validationSupport.registerValidator(tagSelector, false, optionalRegexValidator);
 
         // Block buttons if inputs are incorrect
         loadButton.disableProperty().bind(validationSupport.invalidProperty());
