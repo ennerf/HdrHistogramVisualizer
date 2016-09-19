@@ -18,23 +18,22 @@ import static com.google.common.base.Preconditions.*;
  */
 public abstract class HistogramAccumulator {
 
-    public static HistogramAccumulator createInitialized(String tag,
-                                                         double logStartTimeSec,
-                                                         double valueUnitRatio,
-                                                         EncodableHistogram initialInterval) {
+    public static HistogramAccumulator createEmptyForType(String tag,
+                                                          double logStartTimeSec,
+                                                          double valueUnitRatio,
+                                                          EncodableHistogram expectedHistogramType) {
         checkNotNull(tag);
         HistogramAccumulator accumulator = null;
-        if (initialInterval instanceof DoubleHistogram) {
-            accumulator = new DoubleHistogramAccumulator((DoubleHistogram) initialInterval);
-        } else if (initialInterval instanceof AbstractHistogram) {
-            accumulator = new AbstractHistogramAccumulator((AbstractHistogram) initialInterval);
+        if (expectedHistogramType instanceof DoubleHistogram) {
+            accumulator = new DoubleHistogramAccumulator((DoubleHistogram) expectedHistogramType);
+        } else if (expectedHistogramType instanceof AbstractHistogram) {
+            accumulator = new AbstractHistogramAccumulator((AbstractHistogram) expectedHistogramType);
         } else {
-            throw new IllegalArgumentException("Unknown histogram type: " + initialInterval.getClass().getSimpleName());
+            throw new IllegalArgumentException("Unknown histogram type: " + expectedHistogramType.getClass().getSimpleName());
         }
         accumulator.tag = tag;
         accumulator.logStartTimeSec = logStartTimeSec;
         accumulator.valueUnitRatio = valueUnitRatio;
-        accumulator.appendHistogram(initialInterval);
         return accumulator;
     }
 

@@ -1,5 +1,6 @@
 package us.hebi.histogram.visualizer.parser;
 
+import com.google.common.collect.Lists;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
@@ -8,9 +9,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -29,16 +32,16 @@ public class LoadLogTaskTest {
 
     @Test
     public void parseSingleLog_win() throws Exception {
-        ParserConfiguration config = ParserConfiguration.builder()
-                .inputFile(getTestLog("jHiccup-win.hlog"))
-                .outputValueUnitRatio(1E6)
-                .percentilesOutputTicksPerHalf(5)
+        LoaderArgs config = LoaderArgs.builder()
+                .setInputFile(getTestLog("jHiccup-win.hlog"))
+                .setOutputValueUnitRatio(1E6)
+                .setPercentilesOutputTicksPerHalf(5)
                 .build();
 
         LoadLogTask loadLogTask = new LoadLogTask(config);
-        Collection<HistogramAccumulator> accumulators = loadLogTask.call();
+        List<HistogramAccumulator> accumulators = loadLog(config);
         assertEquals(1, accumulators.size());
-        HistogramAccumulator accumulator = accumulators.iterator().next();
+        HistogramAccumulator accumulator = accumulators.get(0);
 
         data.setAll(accumulator.getIntervalData(1));
         checkValues_win_intervals(1);
@@ -46,7 +49,7 @@ public class LoadLogTaskTest {
         data.setAll(accumulator.getIntervalData(7));
         checkValues_win_intervals(7);
 
-        data.setAll(accumulator.getPercentileData(config.getPercentilesOutputTicksPerHalf()));
+        data.setAll(accumulator.getPercentileData(config.percentilesOutputTicksPerHalf()));
         checkValues_win_percentiles();
 
     }
@@ -83,21 +86,21 @@ public class LoadLogTaskTest {
 
     @Test
     public void parseSingleLog_osx() throws Exception {
-        ParserConfiguration config = ParserConfiguration.builder()
-                .inputFile(getTestLog("jHiccup-osx.hlog"))
-                .outputValueUnitRatio(1E6)
-                .percentilesOutputTicksPerHalf(5)
+        LoaderArgs config = LoaderArgs.builder()
+                .setInputFile(getTestLog("jHiccup-osx.hlog"))
+                .setOutputValueUnitRatio(1E6)
+                .setPercentilesOutputTicksPerHalf(5)
                 .build();
 
         LoadLogTask loadLogTask = new LoadLogTask(config);
-        Collection<HistogramAccumulator> accumulators = loadLogTask.call();
+        List<HistogramAccumulator> accumulators = loadLog(config);
         assertEquals(1, accumulators.size());
-        HistogramAccumulator accumulator = accumulators.iterator().next();
+        HistogramAccumulator accumulator = accumulators.get(0);
 
-        data.setAll(accumulator.getIntervalData(config.getAggregateIntervalSamples()));
+        data.setAll(accumulator.getIntervalData(config.aggregateIntervalSamples()));
         checkValues_osx_intervals();
 
-        data.setAll(accumulator.getPercentileData(config.getPercentilesOutputTicksPerHalf()));
+        data.setAll(accumulator.getPercentileData(config.percentilesOutputTicksPerHalf()));
         checkValues_osx_percentiles();
     }
 
@@ -117,29 +120,28 @@ public class LoadLogTaskTest {
 
     @Test
     public void parseTaggedLog_2tags() throws Exception {
-        ParserConfiguration config = ParserConfiguration.builder()
-                .inputFile(getTestLog("jHiccup-2tags.hlog"))
-                .outputValueUnitRatio(1E6)
-                .percentilesOutputTicksPerHalf(5)
+        LoaderArgs config = LoaderArgs.builder()
+                .setInputFile(getTestLog("jHiccup-2tags.hlog"))
+                .setOutputValueUnitRatio(1E6)
+                .setPercentilesOutputTicksPerHalf(5)
                 .build();
 
         LoadLogTask loadLogTask = new LoadLogTask(config);
-        Collection<HistogramAccumulator> accumulators = loadLogTask.call();
+        List<HistogramAccumulator> accumulators = loadLog(config);
         assertEquals(2, accumulators.size());
-        Iterator<HistogramAccumulator> iter = accumulators.iterator();
 
-        HistogramAccumulator osx = iter.next();
+        HistogramAccumulator osx = accumulators.get(0);
         assertEquals("osx", osx.getTag());
-        data.setAll(osx.getIntervalData(config.getAggregateIntervalSamples()));
+        data.setAll(osx.getIntervalData(config.aggregateIntervalSamples()));
         checkValues_osx_intervals();
-        data.setAll(osx.getPercentileData(config.getPercentilesOutputTicksPerHalf()));
+        data.setAll(osx.getPercentileData(config.percentilesOutputTicksPerHalf()));
         checkValues_osx_percentiles();
 
-        HistogramAccumulator win = iter.next();
+        HistogramAccumulator win = accumulators.get(1);
         assertEquals("win", win.getTag());
-        data.setAll(win.getIntervalData(config.getAggregateIntervalSamples()));
-        checkValues_win_intervals(config.getAggregateIntervalSamples());
-        data.setAll(win.getPercentileData(config.getPercentilesOutputTicksPerHalf()));
+        data.setAll(win.getIntervalData(config.aggregateIntervalSamples()));
+        checkValues_win_intervals(config.aggregateIntervalSamples());
+        data.setAll(win.getPercentileData(config.percentilesOutputTicksPerHalf()));
         checkValues_win_percentiles();
 
     }
@@ -147,18 +149,22 @@ public class LoadLogTaskTest {
     @Test
     public void parseTaggedLog_selector() throws Exception {
 
-        ParserConfiguration config = ParserConfiguration.builder()
-                .inputFile(getTestLog("jHiccup-2tags.hlog"))
-                .outputValueUnitRatio(1E6)
-                .percentilesOutputTicksPerHalf(5)
-                .selectedTags("w.*n")
+        LoaderArgs config = LoaderArgs.builder()
+                .setInputFile(getTestLog("jHiccup-2tags.hlog"))
+                .setOutputValueUnitRatio(1E6)
+                .setPercentilesOutputTicksPerHalf(5)
+                .setSelectedTags("w.*n")
                 .build();
 
-        LoadLogTask loadLogTask = new LoadLogTask(config);
-        Collection<HistogramAccumulator> accumulators = loadLogTask.call();
+        List<HistogramAccumulator> accumulators = loadLog(config);
         assertEquals(1, accumulators.size());
-        assertEquals("win", accumulators.iterator().next().getTag());
+        assertEquals("win", accumulators.get(0).getTag());
 
+    }
+
+    private List<HistogramAccumulator> loadLog(LoaderArgs config) throws IOException {
+        LoadLogTask loadLogTask = new LoadLogTask(config);
+        return Lists.newArrayList(loadLogTask.call());
     }
 
     private void assertEqualsXY(double expectedX, double expectedY, XYChart.Data<Number, Number> actual) {

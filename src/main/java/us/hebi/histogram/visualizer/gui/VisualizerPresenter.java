@@ -28,13 +28,10 @@ import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 import us.hebi.histogram.visualizer.parser.HistogramAccumulator;
 import us.hebi.histogram.visualizer.parser.LoadLogTask;
-import us.hebi.histogram.visualizer.parser.LogParser;
-import us.hebi.histogram.visualizer.parser.ParserConfiguration;
-import us.hebi.histogram.visualizer.parser.ParserConfiguration.ParserConfigurationBuilder;
+import us.hebi.histogram.visualizer.parser.LoaderArgs;
 
 import javax.annotation.PostConstruct;
 import javax.imageio.ImageIO;
-import javax.inject.Inject;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -183,25 +180,10 @@ public class VisualizerPresenter {
 
         try {
 
-            ParserConfiguration config = getCurrentConfiguration();
+            LoaderArgs config = getCurrentConfiguration();
             LoadLogTask loader = new LoadLogTask(config);
 
-            String label = !seriesLabel.getText().isEmpty() ? seriesLabel.getText() : config.getInputFile().getName();
-
-            /*{
-                logParser.parseLog(config);
-
-                XYChart.Series<Number, Number> intervalSeries = new XYChart.Series<Number, Number>();
-                intervalSeries.setName(label);
-                logParser.getIntervalData(intervalSeries.getData());
-
-                XYChart.Series<Number, Number> percentileSeries = new XYChart.Series<Number, Number>();
-                percentileSeries.setName(label);
-                logParser.getPercentileData(percentileSeries.getData());
-
-                intervalChart.getData().add(intervalSeries);
-                percentileChart.getData().add(percentileSeries);
-            }*/
+            String label = !seriesLabel.getText().isEmpty() ? seriesLabel.getText() : config.inputFile().getName();
 
             // TODO: run this properly in the background to avoid halting the GUI
             MoreExecutors.directExecutor().execute(loader);
@@ -211,11 +193,11 @@ public class VisualizerPresenter {
 
                 XYChart.Series<Number, Number> intervalSeries = new XYChart.Series<Number, Number>();
                 intervalSeries.setName(name);
-                intervalSeries.getData().setAll(log.getIntervalData(config.getAggregateIntervalSamples()));
+                intervalSeries.getData().setAll(log.getIntervalData(config.aggregateIntervalSamples()));
 
                 XYChart.Series<Number, Number> percentileSeries = new XYChart.Series<Number, Number>();
                 percentileSeries.setName(name);
-                percentileSeries.getData().setAll(log.getPercentileData(config.getPercentilesOutputTicksPerHalf()));
+                percentileSeries.getData().setAll(log.getPercentileData(config.percentilesOutputTicksPerHalf()));
 
                 intervalChart.getData().add(intervalSeries);
                 percentileChart.getData().add(percentileSeries);
@@ -244,7 +226,7 @@ public class VisualizerPresenter {
 
         // Call HistogramLogProcessor
         try {
-            String[] args = getCurrentConfiguration().toArgsArray(outputFile);
+            String[] args = getCurrentConfiguration().toHistogramProcessorArgs(outputFile);
             HistogramLogProcessor.main(args);
         } catch (Exception e) {
             Alert dialog = new Alert(AlertType.ERROR, e.getMessage(), ButtonType.CLOSE);
@@ -252,37 +234,37 @@ public class VisualizerPresenter {
         }
     }
 
-    private ParserConfiguration getCurrentConfiguration() {
+    private LoaderArgs getCurrentConfiguration() {
         // This method assumes that the input file name is guaranteed to be set, and that
         // all inputs are properly formatted. If preconditions are not met, the button should
         // be disabled.
         checkState(!inputFileName.getText().isEmpty(), "Input file must not be empty");
-        ParserConfigurationBuilder config = ParserConfiguration.builder();
+        LoaderArgs.Builder config = LoaderArgs.builder();
 
         // Required Parameters
-        config.inputFile(new File(inputFileName.getText()));
+        config.setInputFile(new File(inputFileName.getText()));
 
         // Optional Parameters
         if (!outputValueUnitRatio.getText().isEmpty())
-            config.outputValueUnitRatio(parseDouble(outputValueUnitRatio.getText()));
+            config.setOutputValueUnitRatio(parseDouble(outputValueUnitRatio.getText()));
 
         if (!rangeStartTimeSec.getText().isEmpty())
-            config.startTimeSec(parseDouble(rangeStartTimeSec.getText()));
+            config.setStartTimeSec(parseDouble(rangeStartTimeSec.getText()));
 
         if (!rangeEndTimeSec.getText().isEmpty())
-            config.endTimeSec(parseDouble(rangeEndTimeSec.getText()));
+            config.setEndTimeSec(parseDouble(rangeEndTimeSec.getText()));
 
         if (!percentilesOutputTicksPerHalf.getText().isEmpty())
-            config.percentilesOutputTicksPerHalf(Integer.parseInt(percentilesOutputTicksPerHalf.getText()));
+            config.setPercentilesOutputTicksPerHalf(Integer.parseInt(percentilesOutputTicksPerHalf.getText()));
 
         if (!aggregateIntervalSamples.getText().isEmpty())
-            config.aggregateMaximaSamples(Integer.parseInt(aggregateIntervalSamples.getText()));
+            config.setAggregateIntervalSamples(Integer.parseInt(aggregateIntervalSamples.getText()));
 
         if (!tagSelector.getText().isEmpty()) {
-            config.selectedTags(tagSelector.getText());
+            config.setSelectedTags(tagSelector.getText());
         }
 
-        config.logFormatCsv(csvFormatCheckbox.isSelected());
+        config.setLogFormatCsv(csvFormatCheckbox.isSelected());
 
         // Combine
         return config.build();
@@ -444,9 +426,6 @@ public class VisualizerPresenter {
                 new FileChooser.ExtensionFilter("png", "*.png"));
         imageOutputFileChooser.setInitialDirectory(new File("."));
     }
-
-    @Inject
-    LogParser logParser;
 
     FileChooser inputFileChooser;
     FileChooser outputFileChooser;
