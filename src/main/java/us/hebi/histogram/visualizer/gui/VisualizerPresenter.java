@@ -28,7 +28,7 @@ import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 import us.hebi.histogram.visualizer.parser.HistogramTag;
 import us.hebi.histogram.visualizer.parser.HistogramTagReader;
-import us.hebi.histogram.visualizer.parser.LoaderArgs;
+import us.hebi.histogram.visualizer.parser.HistogramProcessorArgs;
 
 import javax.annotation.PostConstruct;
 import javax.imageio.ImageIO;
@@ -180,7 +180,7 @@ public class VisualizerPresenter {
 
         try {
 
-            LoaderArgs config = getCurrentConfiguration();
+            HistogramProcessorArgs config = getCurrentConfiguration();
             HistogramTagReader reader = new HistogramTagReader(config);
 
             String logLabel = !seriesLabel.getText().isEmpty() ? seriesLabel.getText() : config.inputFile().getName();
@@ -226,7 +226,7 @@ public class VisualizerPresenter {
 
         // Call HistogramLogProcessor
         try {
-            String[] args = getCurrentConfiguration().toHistogramProcessorArgs(outputFile);
+            String[] args = getCurrentConfiguration().toCommandlineArgs(outputFile);
             HistogramLogProcessor.main(args);
         } catch (Exception e) {
             Alert dialog = new Alert(AlertType.ERROR, e.getMessage(), ButtonType.CLOSE);
@@ -234,12 +234,12 @@ public class VisualizerPresenter {
         }
     }
 
-    private LoaderArgs getCurrentConfiguration() {
+    private HistogramProcessorArgs getCurrentConfiguration() {
         // This method assumes that the input file name is guaranteed to be set, and that
         // all inputs are properly formatted. If preconditions are not met, the button should
         // be disabled.
         checkState(!inputFileName.getText().isEmpty(), "Input file must not be empty");
-        LoaderArgs.Builder config = LoaderArgs.builder();
+        HistogramProcessorArgs.Builder config = HistogramProcessorArgs.builder();
 
         // Required Parameters
         config.setInputFile(new File(inputFileName.getText()));

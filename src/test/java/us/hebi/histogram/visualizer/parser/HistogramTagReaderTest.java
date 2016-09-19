@@ -29,7 +29,7 @@ public class HistogramTagReaderTest {
 
     @Test
     public void parseSingleLog_win() throws Exception {
-        LoaderArgs config = LoaderArgs.builder()
+        HistogramProcessorArgs config = HistogramProcessorArgs.builder()
                 .setInputFile(getTestLog("jHiccup-win.hlog"))
                 .setOutputValueUnitRatio(1E6)
                 .setPercentilesOutputTicksPerHalf(5)
@@ -82,7 +82,7 @@ public class HistogramTagReaderTest {
 
     @Test
     public void parseSingleLog_osx() throws Exception {
-        LoaderArgs config = LoaderArgs.builder()
+        HistogramProcessorArgs config = HistogramProcessorArgs.builder()
                 .setInputFile(getTestLog("jHiccup-osx.hlog"))
                 .setOutputValueUnitRatio(1E6)
                 .setPercentilesOutputTicksPerHalf(5)
@@ -115,7 +115,7 @@ public class HistogramTagReaderTest {
 
     @Test
     public void parseTaggedLog_2tags() throws Exception {
-        LoaderArgs config = LoaderArgs.builder()
+        HistogramProcessorArgs config = HistogramProcessorArgs.builder()
                 .setInputFile(getTestLog("jHiccup-2tags.hlog"))
                 .setOutputValueUnitRatio(1E6)
                 .setPercentilesOutputTicksPerHalf(5)
@@ -143,7 +143,7 @@ public class HistogramTagReaderTest {
     @Test
     public void parseTaggedLog_selector() throws Exception {
 
-        LoaderArgs config = LoaderArgs.builder()
+        HistogramProcessorArgs config = HistogramProcessorArgs.builder()
                 .setInputFile(getTestLog("jHiccup-2tags.hlog"))
                 .setOutputValueUnitRatio(1E6)
                 .setPercentilesOutputTicksPerHalf(5)
@@ -156,7 +156,7 @@ public class HistogramTagReaderTest {
 
     }
 
-    private List<HistogramTag> readTags(LoaderArgs config) throws IOException {
+    private List<HistogramTag> readTags(HistogramProcessorArgs config) throws IOException {
         HistogramTagReader histogramTagReader = new HistogramTagReader(config);
         return Lists.newArrayList(histogramTagReader.call());
     }

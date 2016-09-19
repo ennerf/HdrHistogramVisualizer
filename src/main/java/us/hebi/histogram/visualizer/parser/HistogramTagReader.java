@@ -24,7 +24,7 @@ import static com.google.common.base.Preconditions.*;
  */
 public class HistogramTagReader extends Task<Iterable<HistogramTag>> {
 
-    public HistogramTagReader(LoaderArgs configuration) {
+    public HistogramTagReader(HistogramProcessorArgs configuration) {
         this.config = checkNotNull(configuration);
     }
 
@@ -80,6 +80,6 @@ public class HistogramTagReader extends Task<Iterable<HistogramTag>> {
 
     }
 
-    final LoaderArgs config;
+    final HistogramProcessorArgs config;
 
 }

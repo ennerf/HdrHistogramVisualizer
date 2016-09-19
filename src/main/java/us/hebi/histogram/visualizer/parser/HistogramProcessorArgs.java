@@ -15,10 +15,10 @@ import static com.google.common.base.Preconditions.*;
  * @since 19 Sep 2016
  */
 @AutoValue
-public abstract class LoaderArgs {
+public abstract class HistogramProcessorArgs {
 
     public static Builder builder() {
-        return new AutoValue_LoaderArgs.Builder()
+        return new AutoValue_HistogramProcessorArgs.Builder()
                 .setStartTimeSec(0)
                 .setEndTimeSec(Double.MAX_VALUE)
                 .setOutputValueUnitRatio(1E6)
@@ -28,7 +28,7 @@ public abstract class LoaderArgs {
                 .setSelectedTags(".*");
     }
 
-    private static void checkArguments(LoaderArgs obj) {
+    private static void checkArguments(HistogramProcessorArgs obj) {
         checkArgument(obj.inputFile() != null && obj.inputFile().isFile(), "Invalid input file");
         checkArgument(obj.startTimeSec() >= 0, "start time can't be negative");
         checkArgument(obj.endTimeSec() >= 0, "end time can't be negative");
@@ -40,7 +40,7 @@ public abstract class LoaderArgs {
         }
     }
 
-    public String[] toHistogramProcessorArgs(File outputFile) {
+    public String[] toCommandlineArgs(File outputFile) {
         List<String> args = new ArrayList<>(16);
         args.add("-i");
         args.add(inputFile().getPath());
@@ -93,10 +93,10 @@ public abstract class LoaderArgs {
 
         public abstract Builder setSelectedTags(String value);
 
-        public abstract LoaderArgs autoBuild();
+        public abstract HistogramProcessorArgs autoBuild();
 
-        public LoaderArgs build() {
-            LoaderArgs args = autoBuild();
+        public HistogramProcessorArgs build() {
+            HistogramProcessorArgs args = autoBuild();
             checkArguments(args);
             return args;
         }
