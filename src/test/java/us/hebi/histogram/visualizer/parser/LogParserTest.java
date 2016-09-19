@@ -38,9 +38,9 @@ public class LogParserTest {
 
         parser.getIntervalData(data);
         assertEquals(253, data.size());
-        assertEqualsXY(1.09800, 1.524735, data.get(0));
-        assertEqualsXY(24.0980, 1.508351, data.get(23));
-        assertEqualsXY(253.098, 1.491967, data.get(data.size() - 1));
+        assertEqualsXY(0.08100, 1.524735, data.get(0));
+        assertEqualsXY(23.0980, 1.508351, data.get(23));
+        assertEqualsXY(252.098, 1.491967, data.get(data.size() - 1));
 
         parser.getPercentileData(data);
         assertEquals(91, data.size());
@@ -64,9 +64,9 @@ public class LogParserTest {
 
         parser.getIntervalData(data);
         assertEquals(37, data.size());
-        assertEqualsXY(1.09800, 1.639423, data.get(0));
-        assertEqualsXY(162.098, 1.508351, data.get(23));
-        assertEqualsXY(253.098, 1.491967, data.get(data.size() - 1));
+        assertEqualsXY(0.08100, 1.639423, data.get(0));
+        assertEqualsXY(161.098, 1.508351, data.get(23));
+        assertEqualsXY(252.098, 1.491967, data.get(data.size() - 1));
 
     }
 
@@ -83,9 +83,9 @@ public class LogParserTest {
 
         parser.getIntervalData(data);
         assertEquals(187, data.size());
-        assertEqualsXY(67.993, 2.656255, data.get(0));
-        assertEqualsXY(90.993, 0.459007, data.get(23));
-        assertEqualsXY(253.993, 0.245887, data.get(data.size() - 1));
+        assertEqualsXY(66.986, 2.656255, data.get(0));
+        assertEqualsXY(89.993, 0.459007, data.get(23));
+        assertEqualsXY(252.993, 0.245887, data.get(data.size() - 1));
 
         parser.getPercentileData(data);
         assertEquals(88, data.size());

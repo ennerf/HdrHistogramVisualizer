@@ -51,7 +51,7 @@ public class LogParser {
                 addToHistogram(accumulatedHistogram, intervalHistogram);
 
                 // Add to interval data
-                final double x = intervalHistogram.getEndTimeStamp() * 1E-3 - logReader.getStartTimeSec();
+                final double x = intervalHistogram.getStartTimeStamp() * 1E-3 - logReader.getStartTimeSec();
                 final double y = intervalHistogram.getMaxValueAsDouble() / config.getOutputValueUnitRatio();
                 rawIntervalData.add(new Data<>(x, y));
 
