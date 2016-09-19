@@ -3,6 +3,7 @@ package us.hebi.histogram.visualizer.gui;
 import com.google.common.io.Files;
 import com.google.common.primitives.Doubles;
 import com.google.common.primitives.Ints;
+import com.google.common.util.concurrent.MoreExecutors;
 import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.ObjectBinding;
@@ -24,6 +25,8 @@ import org.HdrHistogram.HistogramLogProcessor;
 import org.controlsfx.validation.ValidationResult;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
+import us.hebi.histogram.visualizer.parser.HistogramAccumulator;
+import us.hebi.histogram.visualizer.parser.LoadLogTask;
 import us.hebi.histogram.visualizer.parser.LogParser;
 import us.hebi.histogram.visualizer.parser.ParserConfiguration;
 import us.hebi.histogram.visualizer.parser.ParserConfiguration.ParserConfigurationBuilder;
@@ -175,19 +178,43 @@ public class VisualizerPresenter {
         try {
 
             ParserConfiguration config = getCurrentConfiguration();
-            logParser.parseLog(config);
-            String name = !seriesLabel.getText().isEmpty() ? seriesLabel.getText() : config.getInputFile().getName();
+            LoadLogTask loader = new LoadLogTask(config);
 
-            XYChart.Series<Number, Number> intervalSeries = new XYChart.Series<Number, Number>();
-            intervalSeries.setName(name);
-            logParser.getIntervalData(intervalSeries.getData());
+            String label = !seriesLabel.getText().isEmpty() ? seriesLabel.getText() : config.getInputFile().getName();
 
-            XYChart.Series<Number, Number> percentileSeries = new XYChart.Series<Number, Number>();
-            percentileSeries.setName(name);
-            logParser.getPercentileData(percentileSeries.getData());
+            /*{
+                logParser.parseLog(config);
 
-            intervalChart.getData().add(intervalSeries);
-            percentileChart.getData().add(percentileSeries);
+                XYChart.Series<Number, Number> intervalSeries = new XYChart.Series<Number, Number>();
+                intervalSeries.setName(label);
+                logParser.getIntervalData(intervalSeries.getData());
+
+                XYChart.Series<Number, Number> percentileSeries = new XYChart.Series<Number, Number>();
+                percentileSeries.setName(label);
+                logParser.getPercentileData(percentileSeries.getData());
+
+                intervalChart.getData().add(intervalSeries);
+                percentileChart.getData().add(percentileSeries);
+            }*/
+
+            // TODO: run this properly in the background to avoid halting the GUI
+            MoreExecutors.directExecutor().execute(loader);
+            for (HistogramAccumulator log : loader.get()) {
+
+                String name = log.getTag().isEmpty() ? label : label + "-" + log.getTag();
+
+                XYChart.Series<Number, Number> intervalSeries = new XYChart.Series<Number, Number>();
+                intervalSeries.setName(name);
+                intervalSeries.getData().setAll(log.getIntervalData(config.getAggregateIntervalSamples()));
+
+                XYChart.Series<Number, Number> percentileSeries = new XYChart.Series<Number, Number>();
+                percentileSeries.setName(name);
+                percentileSeries.getData().setAll(log.getPercentileData(config.getPercentilesOutputTicksPerHalf()));
+
+                intervalChart.getData().add(intervalSeries);
+                percentileChart.getData().add(percentileSeries);
+
+            }
 
         } catch (Exception e) {
             Alert dialog = new Alert(AlertType.ERROR, e.getMessage(), ButtonType.CLOSE);
