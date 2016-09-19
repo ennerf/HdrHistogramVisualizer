@@ -4,15 +4,12 @@ import com.google.common.collect.Lists;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
-import org.HdrHistogram.Histogram;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -21,7 +18,7 @@ import static org.junit.Assert.*;
  * @author Florian Enner < florian @ hebirobotics.com >
  * @since 18 Sep 2016
  */
-public class LoadLogTaskTest {
+public class HistogramTagReaderTest {
 
     ObservableList<XYChart.Data<Number, Number>> data;
 
@@ -38,10 +35,9 @@ public class LoadLogTaskTest {
                 .setPercentilesOutputTicksPerHalf(5)
                 .build();
 
-        LoadLogTask loadLogTask = new LoadLogTask(config);
-        List<HistogramAccumulator> accumulators = loadLog(config);
-        assertEquals(1, accumulators.size());
-        HistogramAccumulator accumulator = accumulators.get(0);
+        List<HistogramTag> tags = readTags(config);
+        assertEquals(1, tags.size());
+        HistogramTag accumulator = tags.get(0);
 
         data.setAll(accumulator.getIntervalData(1));
         checkValues_win_intervals(1);
@@ -92,10 +88,9 @@ public class LoadLogTaskTest {
                 .setPercentilesOutputTicksPerHalf(5)
                 .build();
 
-        LoadLogTask loadLogTask = new LoadLogTask(config);
-        List<HistogramAccumulator> accumulators = loadLog(config);
-        assertEquals(1, accumulators.size());
-        HistogramAccumulator accumulator = accumulators.get(0);
+        List<HistogramTag> tags = readTags(config);
+        assertEquals(1, tags.size());
+        HistogramTag accumulator = tags.get(0);
 
         data.setAll(accumulator.getIntervalData(config.aggregateIntervalSamples()));
         checkValues_osx_intervals();
@@ -126,19 +121,18 @@ public class LoadLogTaskTest {
                 .setPercentilesOutputTicksPerHalf(5)
                 .build();
 
-        LoadLogTask loadLogTask = new LoadLogTask(config);
-        List<HistogramAccumulator> accumulators = loadLog(config);
-        assertEquals(2, accumulators.size());
+        List<HistogramTag> tags = readTags(config);
+        assertEquals(2, tags.size());
 
-        HistogramAccumulator osx = accumulators.get(0);
-        assertEquals("osx", osx.getTag());
+        HistogramTag osx = tags.get(0);
+        assertEquals("osx", osx.getTagId());
         data.setAll(osx.getIntervalData(config.aggregateIntervalSamples()));
         checkValues_osx_intervals();
         data.setAll(osx.getPercentileData(config.percentilesOutputTicksPerHalf()));
         checkValues_osx_percentiles();
 
-        HistogramAccumulator win = accumulators.get(1);
-        assertEquals("win", win.getTag());
+        HistogramTag win = tags.get(1);
+        assertEquals("win", win.getTagId());
         data.setAll(win.getIntervalData(config.aggregateIntervalSamples()));
         checkValues_win_intervals(config.aggregateIntervalSamples());
         data.setAll(win.getPercentileData(config.percentilesOutputTicksPerHalf()));
@@ -156,15 +150,15 @@ public class LoadLogTaskTest {
                 .setSelectedTags("w.*n")
                 .build();
 
-        List<HistogramAccumulator> accumulators = loadLog(config);
-        assertEquals(1, accumulators.size());
-        assertEquals("win", accumulators.get(0).getTag());
+        List<HistogramTag> tags = readTags(config);
+        assertEquals(1, tags.size());
+        assertEquals("win", tags.get(0).getTagId());
 
     }
 
-    private List<HistogramAccumulator> loadLog(LoaderArgs config) throws IOException {
-        LoadLogTask loadLogTask = new LoadLogTask(config);
-        return Lists.newArrayList(loadLogTask.call());
+    private List<HistogramTag> readTags(LoaderArgs config) throws IOException {
+        HistogramTagReader histogramTagReader = new HistogramTagReader(config);
+        return Lists.newArrayList(histogramTagReader.call());
     }
 
     private void assertEqualsXY(double expectedX, double expectedY, XYChart.Data<Number, Number> actual) {
@@ -173,7 +167,7 @@ public class LoadLogTaskTest {
     }
 
     private File getTestLog(String name) {
-        URL url = LoadLogTaskTest.class.getResource(name);
+        URL url = HistogramTagReaderTest.class.getResource(name);
         assertNotNull("Test log file not found", url);
         return new File(url.getPath());
     }

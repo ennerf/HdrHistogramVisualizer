@@ -26,8 +26,8 @@ import org.HdrHistogram.HistogramLogProcessor;
 import org.controlsfx.validation.ValidationResult;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
-import us.hebi.histogram.visualizer.parser.HistogramAccumulator;
-import us.hebi.histogram.visualizer.parser.LoadLogTask;
+import us.hebi.histogram.visualizer.parser.HistogramTag;
+import us.hebi.histogram.visualizer.parser.HistogramTagReader;
 import us.hebi.histogram.visualizer.parser.LoaderArgs;
 
 import javax.annotation.PostConstruct;
@@ -181,23 +181,23 @@ public class VisualizerPresenter {
         try {
 
             LoaderArgs config = getCurrentConfiguration();
-            LoadLogTask loader = new LoadLogTask(config);
+            HistogramTagReader reader = new HistogramTagReader(config);
 
-            String label = !seriesLabel.getText().isEmpty() ? seriesLabel.getText() : config.inputFile().getName();
+            String logLabel = !seriesLabel.getText().isEmpty() ? seriesLabel.getText() : config.inputFile().getName();
 
             // TODO: run this properly in the background to avoid halting the GUI
-            MoreExecutors.directExecutor().execute(loader);
-            for (HistogramAccumulator log : loader.get()) {
+            MoreExecutors.directExecutor().execute(reader);
+            for (HistogramTag tag : reader.get()) {
 
-                String name = log.getTag().isEmpty() ? label : label + "-" + log.getTag();
+                String seriesLabel = tag.getTagId().isEmpty() ? logLabel : logLabel + "-" + tag.getTagId();
 
                 XYChart.Series<Number, Number> intervalSeries = new XYChart.Series<Number, Number>();
-                intervalSeries.setName(name);
-                intervalSeries.getData().setAll(log.getIntervalData(config.aggregateIntervalSamples()));
+                intervalSeries.setName(seriesLabel);
+                intervalSeries.getData().setAll(tag.getIntervalData(config.aggregateIntervalSamples()));
 
                 XYChart.Series<Number, Number> percentileSeries = new XYChart.Series<Number, Number>();
-                percentileSeries.setName(name);
-                percentileSeries.getData().setAll(log.getPercentileData(config.percentilesOutputTicksPerHalf()));
+                percentileSeries.setName(seriesLabel);
+                percentileSeries.getData().setAll(tag.getPercentileData(config.percentilesOutputTicksPerHalf()));
 
                 intervalChart.getData().add(intervalSeries);
                 percentileChart.getData().add(percentileSeries);

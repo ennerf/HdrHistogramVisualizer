@@ -15,19 +15,23 @@ import java.util.regex.Pattern;
 import static com.google.common.base.Preconditions.*;
 
 /**
+ * Task that can read multiple tags from a single Hdr log. If the
+ * log does not contain any tags, the whole log returns as one
+ * tag with an empty tagId.
+ *
  * @author Florian Enner < florian @ hebirobotics.com >
  * @since 18 Sep 2016
  */
-public class LoadLogTask extends Task<Iterable<HistogramAccumulator>> {
+public class HistogramTagReader extends Task<Iterable<HistogramTag>> {
 
-    public LoadLogTask(LoaderArgs configuration) {
+    public HistogramTagReader(LoaderArgs configuration) {
         this.config = checkNotNull(configuration);
     }
 
     @Override
-    protected Iterable<HistogramAccumulator> call() throws IOException {
+    protected Iterable<HistogramTag> call() throws IOException {
 
-        final TreeMap<String, HistogramAccumulator> tags = new TreeMap<>(String::compareToIgnoreCase);
+        final TreeMap<String, HistogramTag> tags = new TreeMap<>(String::compareToIgnoreCase);
         final Pattern tagPattern = Pattern.compile(config.selectedTags());
 
         try (InputStream inputStream = new FileInputStream(config.inputFile())) {
@@ -49,25 +53,25 @@ public class LoadLogTask extends Task<Iterable<HistogramAccumulator>> {
                 }
 
                 // Make sure we have 1 accumulator per tag.
-                final String tag = Strings.isNullOrEmpty(interval.getTag()) ? "" : interval.getTag();
-                if (!tags.containsKey(tag)) {
+                final String tagId = Strings.isNullOrEmpty(interval.getTag()) ? "" : interval.getTag();
+                if (!tags.containsKey(tagId)) {
 
                     // Ignore non-selected tags
-                    if (!tagPattern.matcher(tag).matches())
+                    if (!tagPattern.matcher(tagId).matches())
                         continue;
 
                     // Initialize empty
-                    HistogramAccumulator accumulator = HistogramAccumulator.createEmptyForType(
-                            tag,
+                    HistogramTag accumulator = HistogramTag.createEmptyForType(
+                            tagId,
                             logReader.getStartTimeSec(),
                             config.outputValueUnitRatio(),
                             interval);
-                    tags.put(tag, accumulator);
+                    tags.put(tagId, accumulator);
 
                 }
 
                 // Add intervals
-                HistogramAccumulator accumulator = tags.get(tag);
+                HistogramTag accumulator = tags.get(tagId);
                 accumulator.appendHistogram(interval);
 
             }
