@@ -28,8 +28,10 @@ import org.controlsfx.validation.Validator;
 import us.hebi.histogram.visualizer.parser.HistogramProcessorArgs;
 import us.hebi.histogram.visualizer.parser.HistogramTag;
 import us.hebi.histogram.visualizer.parser.HistogramTagReader;
+import us.hebi.histogram.visualizer.properties.PersistentProperties;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -277,7 +279,7 @@ public class VisualizerPresenter {
         Validator<String> optionalIntValidator = (c, str) -> ValidationResult.fromErrorIf(c, "Expected integer",
                 str != null && !str.isEmpty() && Ints.tryParse(str) == null);
         Validator<String> requiredFileValidator = (c, str) -> ValidationResult.fromErrorIf(c, "Expected file",
-                str == null || str.isEmpty()); // TODO: check whether file is well formed and exists?
+                Strings.isNullOrEmpty(str)); // TODO: check whether file is well formed and exists?
         Validator<String> optionalRegexValidator = (c, str) -> {
             boolean valid = Strings.isNullOrEmpty(str);
             if (!valid) {
@@ -310,13 +312,36 @@ public class VisualizerPresenter {
         });
 
         // Initialize charts
-        bindChartAxisLabels();
         initializeIntervalChartAxes();
         initializePercentileChartAxes();
+        bindChartAxisLabels();
+        bindPersistentProperties();
 
         // Show main pane on startup
         menuAccordion.setExpandedPane(dataSelectionPane);
 
+    }
+
+    void bindPersistentProperties() {
+        intervalChartTitle.textProperty().bindBidirectional(persistentProps.getString("intervalTitle"));
+        intervalChartX.textProperty().bindBidirectional(persistentProps.getString("intervalX"));
+        intervalChartY.textProperty().bindBidirectional(persistentProps.getString("intervalY"));
+        percentileChartTitle.textProperty().bindBidirectional(persistentProps.getString("percentileTitle"));
+        percentileChartX.textProperty().bindBidirectional(persistentProps.getString("percentileX"));
+        percentileChartY.textProperty().bindBidirectional(persistentProps.getString("percentileY"));
+        inputFileName.textProperty().bindBidirectional(persistentProps.getString("inputFileName"));
+        tagSelector.textProperty().bindBidirectional(persistentProps.getString("tagSelector", ".*"));
+        rangeStartTimeSec.textProperty().bindBidirectional(persistentProps.getString("rangeStartTime"));
+        rangeEndTimeSec.textProperty().bindBidirectional(persistentProps.getString("rangeEndTime"));
+        outputValueUnitRatio.textProperty().bind(persistentProps.getString("unitRatio", "1E9"));
+        percentilesOutputTicksPerHalf.textProperty().bind(persistentProps.getString("percentilesOutputTicksPerHalf", "5"));
+        aggregateIntervalSamples.textProperty().bind(persistentProps.getString("aggregateIntervals", "1"));
+        csvFormatCheckbox.selectedProperty().bindBidirectional(persistentProps.getBoolean("csvFlag", false));
+        clearChartCheckbox.selectedProperty().bindBidirectional(persistentProps.getBoolean("clearChart", true));
+
+        var timeLabelProp = persistentProps.getEnum("timeLabel", IntervalTickFormatter.Seconds);
+        intervalXTickLabel.getSelectionModel().select(timeLabelProp.get());
+        timeLabelProp.bind(intervalXTickLabel.getSelectionModel().selectedItemProperty());
     }
 
     void bindChartAxisLabels() {
@@ -334,7 +359,7 @@ public class VisualizerPresenter {
         final String defaultText = property.getValue();
         checkState(defaultText != null && !defaultText.isEmpty(), "Expected non-empty default");
         property.bind(Bindings.createStringBinding(
-                () -> !textField.get().isEmpty() ? textField.get() : defaultText,
+                () -> !Strings.isNullOrEmpty(textField.get()) ? textField.get() : defaultText,
                 textField
         ));
     }
@@ -424,6 +449,9 @@ public class VisualizerPresenter {
                 new FileChooser.ExtensionFilter("png", "*.png"));
         imageOutputFileChooser.setInitialDirectory(new File("."));
     }
+
+    @Inject
+    PersistentProperties persistentProps;
 
     FileChooser inputFileChooser;
     FileChooser outputFileChooser;
