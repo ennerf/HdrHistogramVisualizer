@@ -96,18 +96,6 @@
             <version>26.0-android</version> <!-- v27+ obfuscates improperly -->
         </dependency>
 
-        <dependency>
-            <groupId>com.google.auto.value</groupId>
-            <artifactId>auto-value</artifactId>
-            <version>1.8.2</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-           <groupId>com.google.code.findbugs</groupId>
-           <artifactId>jsr305</artifactId>
-           <version>3.0.2</version>
-           <scope>compile</scope> <!-- Must have this where procesor runs -->
-        </dependency>
         <dependency> <!-- Useful JavaFX Controls -->
             <groupId>org.controlsfx</groupId>
             <artifactId>controlsfx</artifactId>
