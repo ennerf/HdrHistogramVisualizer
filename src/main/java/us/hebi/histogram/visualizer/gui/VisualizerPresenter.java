@@ -333,9 +333,9 @@ public class VisualizerPresenter {
         tagSelector.textProperty().bindBidirectional(persistentProps.getString("tagSelector", ".*"));
         rangeStartTimeSec.textProperty().bindBidirectional(persistentProps.getString("rangeStartTime"));
         rangeEndTimeSec.textProperty().bindBidirectional(persistentProps.getString("rangeEndTime"));
-        outputValueUnitRatio.textProperty().bind(persistentProps.getString("unitRatio", "1E9"));
-        percentilesOutputTicksPerHalf.textProperty().bind(persistentProps.getString("percentilesOutputTicksPerHalf", "5"));
-        aggregateIntervalSamples.textProperty().bind(persistentProps.getString("aggregateIntervals", "1"));
+        outputValueUnitRatio.textProperty().bindBidirectional(persistentProps.getString("unitRatio", "1E9"));
+        percentilesOutputTicksPerHalf.textProperty().bindBidirectional(persistentProps.getString("percentilesOutputTicksPerHalf", "5"));
+        aggregateIntervalSamples.textProperty().bindBidirectional(persistentProps.getString("aggregateIntervals", "1"));
         csvFormatCheckbox.selectedProperty().bindBidirectional(persistentProps.getBoolean("csvFlag", false));
         clearChartCheckbox.selectedProperty().bindBidirectional(persistentProps.getBoolean("clearChart", true));
 
