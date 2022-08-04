@@ -18,9 +18,6 @@ You can download the latest packaged version for your OS [here](https://raw.gith
 execute from commandline
 <pre>mvn clean compile test exec:java</pre>
 
-create executable jar
-<pre>mvn clean package</pre>
-
 <h2>Screenshots</h2>
 
 * **Exported png image**
