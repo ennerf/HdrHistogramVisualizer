@@ -5,7 +5,7 @@ HdrHistogramVisualizer
 
 An alternative visualizer for [HdrHistogram](https://github.com/HdrHistogram/HdrHistogram) logs as created by [jHiccup](https://github.com/giltene/jHiccup). Note that it has been **deprecated** since [Azul](http://www.azulsystems.com/product/jHiccup) made their [HistogramLogAnalyzer](https://github.com/HdrHistogram/HistogramLogAnalyzer) tool open source.
 
-![HdrHistogramVisualizer](https://ennerf.github.io/HdrHistogramVisualizer/icon.png)
+![HdrHistogramVisualizer](https://ennerf.github.io/HdrHistogramVisualizer/icon.png?)
 
 You can download the latest packaged version for your OS [here](https://ennerf.github.io/HdrHistogramVisualizer/download.html).
 
@@ -17,10 +17,10 @@ execute from commandline
 <h2>Screenshots</h2>
 
 * **Exported png image**
-![Exported png image](https://ennerf.github.io/HdrHistogramVisualizer/screenshots/chart-export-2.png)
+![Exported png image](https://ennerf.github.io/HdrHistogramVisualizer/screenshots/chart-export-2.png?)
 
 * **Main Screen**
-![Screenshot of main screen](https://ennerf.github.io/HdrHistogramVisualizer/screenshots/main-view2.png)
+![Screenshot of main screen](https://ennerf.github.io/HdrHistogramVisualizer/screenshots/main-view2.png?)
 
 <h2>Instructions</h2>
 
@@ -79,6 +79,6 @@ For example, the following 'visualizer.css' file,
 
 creates the following output,
 
-![Screenshot of custom css export](https://ennerf.github.io/HdrHistogramVisualizer/screenshots/chart-export-custom.png)
+![Screenshot of custom css export](https://ennerf.github.io/HdrHistogramVisualizer/screenshots/chart-export-custom.png?)
 
 
