@@ -7,7 +7,7 @@
     <groupId>us.hebi</groupId>
     <artifactId>hdrhistogram-visualizer</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
 
     <name>HdrHistogram Visualizer</name>
     <description>Visualizer for HdrHistogram and JHiccup logs</description>
@@ -35,7 +35,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <openjfx.version>18</openjfx.version>
+        <openjfx.version>18.0.2</openjfx.version>
     </properties>
 
     <dependencies>
@@ -122,52 +122,31 @@
         </dependency>
         <!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
         <dependency>
-           <groupId>javax.annotation</groupId>
-           <artifactId>javax.annotation-api</artifactId>
-           <version>1.3.2</version>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-	<plugin>
-	    <groupId>org.apache.maven.plugins</groupId>
-	    <artifactId>maven-compiler-plugin</artifactId>
-	    <version>3.8.1</version>
-	    <configuration>
-		<source>11</source>
-		<target>11</target>
-		<!-- <release>17</release>  -->
-		<fork>true</fork>
-		<compilerArgs>
-		    <arg>-Xlint:all</arg>
-		</compilerArgs>
-		<!--for unmappable characters in classes-->
-		<encoding>UTF-8</encoding>
-		<showDeprecation>true</showDeprecation>
-		<showWarnings>true</showWarnings>
-	   </configuration>
-	</plugin>
-            <plugin> <!-- Builds an assembly jar that includes dependencies -->
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.3</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>${main.class}</mainClass>
-                                </transformer>
-                            </transformers>
-                        </configuration>
-                    </execution>
-                </executions>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                    <!-- <release>17</release>  -->
+                    <fork>true</fork>
+                    <compilerArgs>
+                        <arg>-Xlint:all</arg>
+                    </compilerArgs>
+                    <!--for unmappable characters in classes-->
+                    <encoding>UTF-8</encoding>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                </configuration>
             </plugin>
 
             <plugin> <!-- Allows execution via 'mvn exec:java' -->
@@ -188,6 +167,29 @@
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                            <excludeGroupIds>org.junit</excludeGroupIds>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
 
         <resources>
