@@ -5,11 +5,13 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import us.hebi.histogram.visualizer.gui.VisualizerView;
 
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.Optional;
 
 import static java.nio.file.StandardWatchEventKinds.*;
 
@@ -27,6 +29,7 @@ public class Visualizer extends Application {
         stage.setMinHeight(550);
         stage.setTitle("HdrHistogram Visualizer");
         stage.setScene(scene);
+        loadIconsForStage(stage);
         stage.show();
 
         // Auto load css file
@@ -97,6 +100,24 @@ public class Visualizer extends Application {
         pollThread.setDaemon(true);
         pollThread.start();
 
+    }
+
+    private static void loadIconsForStage(Stage stage) {
+        // This is required for Windows and Linux. On macOS there's no distinction between window
+        // icons and app icons, so we don't bundle the icon PNGs separately and thus the loop here
+        // doesn't do anything.
+        Optional.ofNullable(System.getProperty("app.dir")).map(Paths::get).ifPresent(iconsDir -> {
+            stage.getIcons().clear();
+            try (var dirEntries = Files.newDirectoryStream(iconsDir, "icon-*.png")) {
+                for (Path iconFile : dirEntries) {
+                    try (var icon = Files.newInputStream(iconFile)) {
+                        stage.getIcons().add(new Image(icon));
+                    }
+                }
+            } catch (IOException ioe) {
+                throw new RuntimeException("Failed to load icons", ioe);
+            }
+        });
     }
 
     @Override
