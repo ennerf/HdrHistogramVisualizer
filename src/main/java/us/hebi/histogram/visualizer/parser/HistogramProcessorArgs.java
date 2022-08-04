@@ -1,6 +1,5 @@
 package us.hebi.histogram.visualizer.parser;
 
-import com.google.auto.value.AutoValue;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import static com.google.common.base.Preconditions.*;
  * @author Florian Enner < florian @ hebirobotics.com >
  * @since 19 Sep 2016
  */
-@AutoValue
 public abstract class HistogramProcessorArgs {
 
     public static Builder builder() {
@@ -74,7 +72,6 @@ public abstract class HistogramProcessorArgs {
 
     public abstract String selectedTags();
 
-    @AutoValue.Builder
     public abstract static class Builder {
 
         public abstract Builder setInputFile(File value);

@@ -11,7 +11,6 @@ import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.Property;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ListChangeListener;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
@@ -26,12 +25,11 @@ import org.HdrHistogram.HistogramLogProcessor;
 import org.controlsfx.validation.ValidationResult;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
+import us.hebi.histogram.visualizer.parser.HistogramProcessorArgs;
 import us.hebi.histogram.visualizer.parser.HistogramTag;
 import us.hebi.histogram.visualizer.parser.HistogramTagReader;
-import us.hebi.histogram.visualizer.parser.HistogramProcessorArgs;
 
 import javax.annotation.PostConstruct;
-import javax.imageio.ImageIO;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -162,12 +160,12 @@ public class VisualizerPresenter {
         chartPane.snapshot(null, image);
 
         // Write to disk
-        try {
+        /*try {
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", outputFile);
         } catch (Exception e) {
             Alert dialog = new Alert(AlertType.ERROR, e.getMessage(), ButtonType.CLOSE);
             dialog.showAndWait();
-        }
+        }*/
     }
 
     @FXML
