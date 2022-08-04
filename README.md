@@ -12,7 +12,7 @@ This tool serves as an alternative to the jHiccupLogProcessor and jHiccupPlotter
 
 <h2>Download</h2>
 
-You can download the latest packaged version for your OS [here](https://raw.githack.com/ennerf/HdrHistogramVisualizer/site/download.html).
+You can download the latest packaged version for your OS [here](https://ennerf.github.io/HdrHistogramVisualizer/download.html).
 
 <h2>Maven</h2>
 execute from commandline
