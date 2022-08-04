@@ -10,6 +10,10 @@ Visualizer for HdrHistogram and jHiccup logs
 
 This tool serves as an alternative to the jHiccupLogProcessor and jHiccupPlotter utilities that are bundled with jHiccup.
 
+<h2>Download</h2>
+
+You can download the latest packaged version for your OS [here](https://raw.githack.com/ennerf/HdrHistogramVisualizer/site/download.html).
+
 <h2>Maven</h2>
 execute from commandline
 <pre>mvn clean compile test exec:java</pre>
