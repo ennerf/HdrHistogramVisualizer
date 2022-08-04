@@ -3,16 +3,12 @@ HdrHistogramVisualizer
 
 [![Join the chat at https://gitter.im/ennerf/HdrHistogramVisualizer](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ennerf/HdrHistogramVisualizer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Visualizer for HdrHistogram and jHiccup logs
+An alternative visualizer for [HdrHistogram](https://github.com/HdrHistogram/HdrHistogram) logs as created by [jHiccup](https://github.com/giltene/jHiccup). Note that it has been **deprecated** since [Azul](http://www.azulsystems.com/product/jHiccup) made their [HistogramLogAnalyzer](https://github.com/HdrHistogram/HistogramLogAnalyzer) tool open source.
 
-* [HdrHistogram](https://github.com/HdrHistogram/HdrHistogram)
-* [jHiccup](https://github.com/giltene/jHiccup) by [Azul](http://www.azulsystems.com/product/jHiccup)
-
-This tool serves as an alternative to the jHiccupLogProcessor and jHiccupPlotter utilities that are bundled with jHiccup.
-
-<h2>Download</h2>
+![HdrHistogramVisualizer](https://ennerf.github.io/HdrHistogramVisualizer/icon.png "PNG image export")
 
 You can download the latest packaged version for your OS [here](https://ennerf.github.io/HdrHistogramVisualizer/download.html).
+
 
 <h2>Maven</h2>
 execute from commandline
@@ -21,10 +17,10 @@ execute from commandline
 <h2>Screenshots</h2>
 
 * **Exported png image**
-![Exported png image](https://raw.githubusercontent.com/ennerf/HdrHistogramVisualizer/resources/screenshots/chart-export-2.png "PNG image export")
+![Exported png image](https://ennerf.github.io/HdrHistogramVisualizer/screenshots/chart-export-2.png "PNG image export")
 
 * **Main Screen**
-![Screenshot of main screen](https://raw.githubusercontent.com/ennerf/HdrHistogramVisualizer/resources/screenshots/main-view2.png "Main screen")
+![Screenshot of main screen](https://ennerf.github.io/HdrHistogramVisualizer/screenshots/main-view2.png "Main screen")
 
 <h2>Instructions</h2>
 
@@ -83,6 +79,6 @@ For example, the following 'visualizer.css' file,
 
 creates the following output,
 
-![Screenshot of custom css export](https://raw.githubusercontent.com/ennerf/HdrHistogramVisualizer/resources/screenshots/chart-export-custom.png "Export with custom CSS")
+![Screenshot of custom css export](https://ennerf.github.io/HdrHistogramVisualizer/screenshots/chart-export-custom.png "Export with custom CSS")
 
 
