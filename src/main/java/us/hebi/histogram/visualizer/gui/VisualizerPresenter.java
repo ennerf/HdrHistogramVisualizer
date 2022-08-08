@@ -1,10 +1,13 @@
 package us.hebi.histogram.visualizer.gui;
 
+import atlantafx.base.theme.PrimerDark;
+import atlantafx.base.theme.PrimerLight;
 import com.google.common.base.Strings;
 import com.google.common.io.Files;
 import com.google.common.primitives.Doubles;
 import com.google.common.primitives.Ints;
 import com.google.common.util.concurrent.MoreExecutors;
+import javafx.application.Application;
 import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.ObjectBinding;
@@ -133,6 +136,9 @@ public class VisualizerPresenter {
 
     @FXML
     private TitledPane dataSelectionPane;
+
+    @FXML
+    private ChoiceBox<String> themeSelector;
 
     @FXML
     void selectInputFile(ActionEvent event) {
@@ -319,6 +325,21 @@ public class VisualizerPresenter {
 
         // Show main pane on startup
         menuAccordion.setExpandedPane(dataSelectionPane);
+
+        // Persistent theme
+        Runnable setTheme = () -> {
+            switch (themeSelector.getValue()) {
+                case "Light":
+                    Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
+                    return;
+                case "Dark":
+                    Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
+                    return;
+            }
+        };
+        themeSelector.valueProperty().bindBidirectional(persistentProps.getString("theme", "Dark"));
+        setTheme.run();
+        themeSelector.setOnAction(evt -> setTheme.run());
 
     }
 

@@ -38,7 +38,27 @@
         <openjfx.version>18.0.2</openjfx.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>ossrh.snapshots</id>
+            <name>OSSRH snapshots</name>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <dependencies>
+        <dependency> <!-- AtlantaFX styles -->
+            <groupId>io.github.mkpaz</groupId>
+            <artifactId>atlantafx-base</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency> <!-- API, java.xml.bind module -->
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>

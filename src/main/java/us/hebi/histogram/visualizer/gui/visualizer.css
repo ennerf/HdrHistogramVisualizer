@@ -1,3 +1,4 @@
+/*
 .root {
     -fx-background-color: white;
     -fx-border-color: white;
@@ -92,6 +93,7 @@
 .axis-label {
     -fx-text-fill: black;
 }
+*/
 
 .chart-series-line {
     -fx-stroke-width: 2px;
