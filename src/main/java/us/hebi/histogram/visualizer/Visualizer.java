@@ -1,7 +1,5 @@
 package us.hebi.histogram.visualizer;
 
-import atlantafx.base.theme.PrimerDark;
-import atlantafx.base.theme.PrimerLight;
 import com.airhacks.afterburner.injection.Injector;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -25,10 +23,9 @@ public class Visualizer extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
 
         VisualizerView root = new VisualizerView();
-        Scene scene = new Scene(root.getView(), 1300, 750);
+        Scene scene = new Scene(root.getView());
         stage.setMinWidth(500);
         stage.setMinHeight(550);
         stage.setTitle("HdrHistogram Visualizer");

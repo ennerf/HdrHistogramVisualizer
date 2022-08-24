@@ -1,3 +1,13 @@
+.grid {
+    -fx-vgap: 5px;
+    -fx-hgap: 5px;
+}
+
+.chart-series-line {
+    -fx-stroke-width: 1px;
+    -fx-effect: null;
+}
+
 /*
 .root {
     -fx-background-color: white;
@@ -95,11 +105,7 @@
 }
 */
 
-.chart-series-line {
-    -fx-stroke-width: 2px;
-    -fx-effect: null;
-}
-
+/*
 .default-color0.chart-series-line {
     -fx-stroke: blue;
 }
@@ -139,3 +145,4 @@
 .default-color4.chart-line-symbol {
     -fx-background-color: goldenrod, white;
 }
+*/

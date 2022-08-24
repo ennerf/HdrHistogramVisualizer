@@ -1,13 +1,10 @@
 package us.hebi.histogram.visualizer.gui;
 
-import atlantafx.base.theme.PrimerDark;
-import atlantafx.base.theme.PrimerLight;
 import com.google.common.base.Strings;
 import com.google.common.io.Files;
 import com.google.common.primitives.Doubles;
 import com.google.common.primitives.Ints;
 import com.google.common.util.concurrent.MoreExecutors;
-import javafx.application.Application;
 import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.ObjectBinding;
@@ -32,8 +29,10 @@ import us.hebi.histogram.visualizer.parser.HistogramProcessorArgs;
 import us.hebi.histogram.visualizer.parser.HistogramTag;
 import us.hebi.histogram.visualizer.parser.HistogramTagReader;
 import us.hebi.histogram.visualizer.properties.PersistentProperties;
+import us.hebi.histogram.visualizer.themes.Theme;
 
 import javax.annotation.PostConstruct;
+import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import java.io.File;
 import java.net.URL;
@@ -138,7 +137,7 @@ public class VisualizerPresenter {
     private TitledPane dataSelectionPane;
 
     @FXML
-    private ChoiceBox<String> themeSelector;
+    private ChoiceBox<Theme> themeSelector;
 
     @FXML
     void selectInputFile(ActionEvent event) {
@@ -168,12 +167,14 @@ public class VisualizerPresenter {
         chartPane.snapshot(null, image);
 
         // Write to disk
-        /*try {
-            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", outputFile);
+        try {
+            // TODO: replace with png utils from ChartFX
+            // TODO: does not work with dark theme?
+            ImageIO.write(javafx.embed.swing.SwingFXUtils.fromFXImage(image, null), "png", outputFile);
         } catch (Exception e) {
             Alert dialog = new Alert(AlertType.ERROR, e.getMessage(), ButtonType.CLOSE);
             dialog.showAndWait();
-        }*/
+        }
     }
 
     @FXML
@@ -327,19 +328,11 @@ public class VisualizerPresenter {
         menuAccordion.setExpandedPane(dataSelectionPane);
 
         // Persistent theme
-        Runnable setTheme = () -> {
-            switch (themeSelector.getValue()) {
-                case "Light":
-                    Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
-                    return;
-                case "Dark":
-                    Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
-                    return;
-            }
-        };
-        themeSelector.valueProperty().bindBidirectional(persistentProps.getString("theme", "Dark"));
-        setTheme.run();
+        Runnable setTheme = () -> themeSelector.getValue().setTheme();
+        themeSelector.getItems().setAll(Theme.values());
+        themeSelector.valueProperty().bindBidirectional(persistentProps.getEnum("theme", Theme.DEFAULT));
         themeSelector.setOnAction(evt -> setTheme.run());
+        setTheme.run();
 
     }
 

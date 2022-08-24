@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -17,9 +19,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="us.hebi.histogram.visualizer.gui.VisualizerPresenter">
+<AnchorPane prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="us.hebi.histogram.visualizer.gui.VisualizerPresenter">
    <children>
       <SplitPane dividerPositions="0.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
@@ -31,7 +31,7 @@
                         <content>
                               <ScrollPane maxHeight="1.7976931348623157E308" minHeight="20.0" minWidth="100.0" prefViewportHeight="200.0" prefViewportWidth="250.0">
                                  <content>
-                                    <GridPane>
+                                    <GridPane styleClass="grid">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="120.0" />
                                         <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="120.0" />
@@ -63,8 +63,8 @@
                                           <Label text="%aggregateIntervalSamples" GridPane.rowIndex="8" />
                                           <Label text="%exportFlags" GridPane.rowIndex="9" />
                                           <Label text="%chartFlags" GridPane.rowIndex="10" />
-                                          <Button fx:id="inputSelectButton" mnemonicParsing="false" onAction="#selectInputFile" prefWidth="140.0" text="%selectFile" GridPane.columnIndex="1" />
-                                          <TextField fx:id="inputFileName" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                                          <Button fx:id="inputSelectButton" defaultButton="true" mnemonicParsing="false" onAction="#selectInputFile" prefWidth="140.0" styleClass="default" text="%selectFile" GridPane.columnIndex="1" />
+                                          <TextField fx:id="inputFileName" styleClass="success" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                                           <TextField fx:id="seriesLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <TextField fx:id="rangeStartTimeSec" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                           <TextField fx:id="rangeEndTimeSec" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -74,7 +74,7 @@
                                           <TextField fx:id="aggregateIntervalSamples" text="1" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                                           <CheckBox fx:id="csvFormatCheckbox" mnemonicParsing="false" text="%option.csv" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                                           <CheckBox fx:id="clearChartCheckbox" mnemonicParsing="false" selected="true" text="%option.clear" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                                          <Button fx:id="loadButton" mnemonicParsing="false" onAction="#loadLog" prefWidth="140.0" text="%loadLog" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                          <Button fx:id="loadButton" defaultButton="true" mnemonicParsing="false" onAction="#loadLog" prefWidth="140.0" text="%loadLog" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                                           <Button fx:id="saveImageButton" mnemonicParsing="false" onAction="#saveImage" prefWidth="140.0" text="%exportImage" GridPane.columnIndex="1" GridPane.rowIndex="12" />
                                           <Button fx:id="exportButton" mnemonicParsing="false" onAction="#exportLog" prefWidth="140.0" text="%exportLog" GridPane.columnIndex="1" GridPane.rowIndex="13" />
                                        </children>
@@ -87,7 +87,7 @@
                         <content>
                               <ScrollPane minHeight="20.0" minWidth="100.0" prefViewportHeight="300.0" prefViewportWidth="250.0">
                                  <content>
-                                    <GridPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <GridPane styleClass="grid" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <Label text="%chart.title" />
                                           <TextField fx:id="intervalChartTitle" GridPane.columnIndex="1" />
@@ -117,7 +117,7 @@
                         <content>
                               <ScrollPane prefViewportHeight="200.0" prefViewportWidth="250.0">
                                  <content>
-                                    <GridPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <GridPane styleClass="grid" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <Label text="%chart.title" />
                                           <Label text="%chart.y" GridPane.rowIndex="2" />
@@ -144,7 +144,7 @@
                            <content>
                               <ScrollPane prefViewportHeight="200.0" prefViewportWidth="250.0">
                                  <content>
-                                    <GridPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <GridPane styleClass="grid" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="120.0" />
                                           <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="120.0" />
@@ -154,7 +154,7 @@
                                        </rowConstraints>
                                        <children>
                                           <Label text="Theme" />
-                                           <ChoiceBox fx:id="themeSelector" prefWidth="150.0" GridPane.columnIndex="1" value="Dark">
+                                           <ChoiceBox fx:id="themeSelector" prefWidth="150.0" value="Dark" GridPane.columnIndex="1">
                                                <items>
                                                    <FXCollections fx:factory="observableArrayList">
                                                        <String fx:value="Light" />
