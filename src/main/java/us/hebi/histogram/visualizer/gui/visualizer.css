@@ -8,6 +8,11 @@
     -fx-effect: null;
 }
 
+/* required for snapshot background */
+#chartPane {
+    -fx-background-color: -color-bg-default;
+}
+
 /*
 .root {
     -fx-background-color: white;

@@ -13,6 +13,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.SnapshotResult;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -20,6 +21,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
+import javafx.util.Callback;
 import javafx.util.StringConverter;
 import org.HdrHistogram.HistogramLogProcessor;
 import org.controlsfx.validation.ValidationResult;
@@ -162,19 +164,18 @@ public class VisualizerPresenter {
             return;
         imageOutputFileChooser.setInitialDirectory(outputFile.getParentFile());
 
-        // Create image from current chart content
-        WritableImage image = new WritableImage((int) chartPane.getWidth(), (int) chartPane.getHeight());
-        chartPane.snapshot(null, image);
+        // Save a snapshot of the next render
+        chartPane.snapshot(result -> {
+            try {
+                // TODO: replace with png utils from ChartFX
+                ImageIO.write(javafx.embed.swing.SwingFXUtils.fromFXImage(result.getImage(), null), "png", outputFile);
+            } catch (Exception e) {
+                Alert dialog = new Alert(AlertType.ERROR, e.getMessage(), ButtonType.CLOSE);
+                dialog.showAndWait();
+            }
+            return null;
+        }, null, null);
 
-        // Write to disk
-        try {
-            // TODO: replace with png utils from ChartFX
-            // TODO: does not work with dark theme?
-            ImageIO.write(javafx.embed.swing.SwingFXUtils.fromFXImage(image, null), "png", outputFile);
-        } catch (Exception e) {
-            Alert dialog = new Alert(AlertType.ERROR, e.getMessage(), ButtonType.CLOSE);
-            dialog.showAndWait();
-        }
     }
 
     @FXML
@@ -372,10 +373,9 @@ public class VisualizerPresenter {
         // resources.getString("<name>"), but that would unnecessarily duplicate the resource strings.
         final String defaultText = property.getValue();
         checkState(defaultText != null && !defaultText.isEmpty(), "Expected non-empty default");
-        property.bind(Bindings.createStringBinding(
-                () -> !Strings.isNullOrEmpty(textField.get()) ? textField.get() : defaultText,
-                textField
-        ));
+        property.bind(Bindings.when(textField.isNotNull().and(textField.isNotEmpty()))
+                .then(textField)
+                .otherwise(defaultText));
     }
 
     void initializeIntervalChartAxes() {
