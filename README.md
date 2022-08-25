@@ -19,8 +19,11 @@ execute from commandline
 * **Exported png image**
 ![Exported png image](https://ennerf.github.io/HdrHistogramVisualizer/screenshots/chart-export-2.png?)
 
-* **Main Screen**
-![Screenshot of main screen](https://ennerf.github.io/HdrHistogramVisualizer/screenshots/main-view2.png?)
+* **Main Screen (Dark)**
+![Screenshot of main screen](https://ennerf.github.io/HdrHistogramVisualizer/screenshots/main-view-dark.png?)
+
+* **Main Screen (Light)**
+  ![Screenshot of main screen](https://ennerf.github.io/HdrHistogramVisualizer/screenshots/main-view-light.png?)
 
 <h2>Instructions</h2>
 

@@ -23,6 +23,7 @@ public class Visualizer extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
         VisualizerView root = new VisualizerView();
         Scene scene = new Scene(root.getView());
         stage.setMinWidth(500);

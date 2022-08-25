@@ -1,3 +1,19 @@
+.grid {
+    -fx-vgap: 5px;
+    -fx-hgap: 5px;
+}
+
+.chart-series-line {
+    -fx-stroke-width: 1px;
+    -fx-effect: null;
+}
+
+/* required for snapshot background */
+#chartPane {
+    -fx-background-color: -color-bg-default;
+}
+
+/*
 .root {
     -fx-background-color: white;
     -fx-border-color: white;
@@ -92,12 +108,9 @@
 .axis-label {
     -fx-text-fill: black;
 }
+*/
 
-.chart-series-line {
-    -fx-stroke-width: 2px;
-    -fx-effect: null;
-}
-
+/*
 .default-color0.chart-series-line {
     -fx-stroke: blue;
 }
@@ -137,3 +150,4 @@
 .default-color4.chart-line-symbol {
     -fx-background-color: goldenrod, white;
 }
+*/
