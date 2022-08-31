@@ -1,13 +1,66 @@
 .root {
+  -color-black: #1b1f24;
+  -color-white: #ffffff;
+  -color-gray-0: #f6f8fa;
+  -color-gray-1: #eaeef2;
+  -color-gray-2: #d0d7de;
+  -color-gray-3: #afb8c1;
+  -color-gray-4: #8c959f;
+  -color-gray-5: #6e7781;
+  -color-gray-6: #57606a;
+  -color-gray-7: #424a53;
+  -color-gray-8: #32383f;
+  -color-gray-9: #24292f;
+  -color-blue-0: #ddf4ff;
+  -color-blue-1: #b6e3ff;
+  -color-blue-2: #80ccff;
+  -color-blue-3: #54aeff;
+  -color-blue-4: #218bff;
+  -color-blue-5: #0969da;
+  -color-blue-6: #0550ae;
+  -color-blue-7: #033d8b;
+  -color-blue-8: #0a3069;
+  -color-blue-9: #002155;
+  -color-green-0: #dafbe1;
+  -color-green-1: #aceebb;
+  -color-green-2: #6fdd8b;
+  -color-green-3: #4ac26b;
+  -color-green-4: #2da44e;
+  -color-green-5: #1a7f37;
+  -color-green-6: #116329;
+  -color-green-7: #044f1e;
+  -color-green-8: #003d16;
+  -color-green-9: #002d11;
+  -color-yellow-0: #fff8c5;
+  -color-yellow-1: #fae17d;
+  -color-yellow-2: #eac54f;
+  -color-yellow-3: #d4a72c;
+  -color-yellow-4: #bf8700;
+  -color-yellow-5: #9a6700;
+  -color-yellow-6: #7d4e00;
+  -color-yellow-7: #633c01;
+  -color-yellow-8: #4d2d00;
+  -color-yellow-9: #3b2300;
+  -color-red-0: #ffebe9;
+  -color-red-1: #ffcecb;
+  -color-red-2: #ffaba8;
+  -color-red-3: #ff8182;
+  -color-red-4: #fa4549;
+  -color-red-5: #cf222e;
+  -color-red-6: #a40e26;
+  -color-red-7: #82071e;
+  -color-red-8: #660018;
+  -color-red-9: #4c0014;
   -color-fg-default: #24292f;
   -color-fg-muted: #57606a;
   -color-fg-subtle: #6e7781;
   -color-fg-emphasis: #ffffff;
   -color-bg-default: #ffffff;
+  -color-bg-overlay: #ffffff;
   -color-bg-subtle: #f6f8fa;
   -color-bg-inset: #f6f8fa;
   -color-border-default: #d0d7de;
-  -color-border-muted: rgb(215, 221, 227);
+  -color-border-muted: #d0d7de;
   -color-border-subtle: rgba(27, 31, 36, 0.15);
   -color-neutral-emphasis-plus: #24292f;
   -color-neutral-emphasis: #6e7781;
@@ -28,7 +81,7 @@
   -color-danger-fg: #cf222e;
   -color-danger-emphasis: #cf222e;
   -color-danger-muted: rgba(255, 129, 130, 0.4);
-  -color-danger-subtle: #FFEBE9;
+  -color-danger-subtle: #ffebe9;
   -color-chart-1: #f3622d;
   -color-chart-2: #fba71b;
   -color-chart-3: #57b757;
@@ -54,7 +107,6 @@
   -color-chart-7-alpha20: rgba(200, 65, 100, 0.2);
   -color-chart-8-alpha20: rgba(136, 136, 136, 0.2);
   -fx-background-color: -color-bg-default;
-  -fx-font-family: "Inter";
   -fx-font-size: 14px;
   -fx-background-radius: inherit;
   -fx-background-insets: inherit;
@@ -186,18 +238,18 @@ Text {
 }
 
 .button {
-  -color-button-bg: -color-bg-inset;
+  -color-button-bg: -color-bg-subtle;
   -color-button-fg: -color-fg-default;
   -color-button-border: -color-border-default;
-  -color-button-bg-hover: derive(-color-button-bg, -5%);
+  -color-button-bg-hover: -color-gray-1;
   -color-button-fg-hover: -color-button-fg;
   -color-button-border-hover: -color-button-border;
   -color-button-bg-focused: -color-button-bg;
   -color-button-fg-focused: -color-button-fg;
   -color-button-border-focused: -color-accent-emphasis;
-  -color-button-bg-pressed: derive(-color-button-bg, -10%);
+  -color-button-bg-pressed: -color-gray-2;
   -color-button-fg-pressed: -color-button-fg;
-  -color-button-border-pressed: -color-button-border;
+  -color-button-border-pressed: transparent;
   -fx-background-color: -color-button-border, -color-button-bg;
   -fx-background-insets: 0, 1px;
   -fx-background-radius: 4px;
@@ -254,12 +306,12 @@ Text {
   -fx-background-color: -color-button-border-hover, -color-button-bg-hover;
   -fx-text-fill: -color-button-fg-hover;
 }
+.button:hover:focused {
+  -fx-background-color: -color-button-border-focused, -color-button-bg-hover;
+}
 .button:hover .font-icon, .button:hover .ikonli-font-icon {
   -fx-icon-color: -color-button-fg-hover;
   -fx-fill: -color-button-fg-hover;
-}
-.button:hover:focused {
-  -fx-background-color: -color-button-border-focused, -color-button-bg-hover;
 }
 .button:focused {
   -fx-background-color: -color-button-border-focused, -color-button-bg-focused;
@@ -281,73 +333,89 @@ Text {
   -color-button-bg: -color-accent-emphasis;
   -color-button-fg: -color-fg-emphasis;
   -color-button-border: -color-accent-emphasis;
+  -color-button-bg-hover: -color-blue-6;
+  -color-button-fg-hover: -color-fg-emphasis;
+  -color-button-border-hover: -color-accent-emphasis;
+  -color-button-bg-focused: -color-accent-emphasis;
+  -color-button-fg-focused: -color-fg-emphasis;
   -color-button-border-focused: -color-accent-emphasis;
+  -color-button-bg-pressed: -color-blue-6;
+  -color-button-fg-pressed: -color-fg-emphasis;
+  -color-button-border-pressed: transparent;
 }
 .button:default.button-outlined, .button.accent.button-outlined {
   -color-button-bg: -color-bg-default;
   -color-button-fg: -color-accent-fg;
   -color-button-bg-hover: -color-accent-emphasis;
   -color-button-fg-hover: -color-fg-emphasis;
-  -color-button-bg-focused: -color-accent-emphasis;
-  -color-button-fg-focused: -color-fg-emphasis;
-  -color-button-bg-pressed: derive(-color-accent-emphasis, -10%);
-  -color-button-fg-pressed: -color-fg-emphasis;
 }
 .button:default.flat, .button.accent.flat {
-  -color-button-fg: -color-accent-emphasis;
+  -color-button-fg: -color-accent-fg;
   -color-button-bg-hover: -color-accent-subtle;
 }
 .button.success {
   -color-button-bg: -color-success-emphasis;
   -color-button-fg: -color-fg-emphasis;
   -color-button-border: -color-success-emphasis;
+  -color-button-bg-hover: -color-green-5;
+  -color-button-fg-hover: -color-fg-emphasis;
+  -color-button-border-hover: -color-success-emphasis;
+  -color-button-bg-focused: -color-success-emphasis;
+  -color-button-fg-focused: -color-fg-emphasis;
   -color-button-border-focused: -color-success-emphasis;
+  -color-button-bg-pressed: -color-green-5;
+  -color-button-fg-pressed: -color-fg-emphasis;
+  -color-button-border-pressed: transparent;
 }
 .button.success.button-outlined {
   -color-button-bg: -color-bg-default;
   -color-button-fg: -color-success-fg;
   -color-button-bg-hover: -color-success-emphasis;
   -color-button-fg-hover: -color-fg-emphasis;
-  -color-button-bg-focused: -color-success-emphasis;
-  -color-button-fg-focused: -color-fg-emphasis;
-  -color-button-bg-pressed: derive(-color-success-emphasis, -10%);
-  -color-button-fg-pressed: -color-fg-emphasis;
 }
 .button.success.flat {
-  -color-button-fg: -color-success-emphasis;
+  -color-button-fg: -color-success-fg;
   -color-button-bg-hover: -color-success-subtle;
 }
 .button.danger {
   -color-button-bg: -color-danger-emphasis;
   -color-button-fg: -color-fg-emphasis;
   -color-button-border: -color-danger-emphasis;
+  -color-button-bg-hover: -color-red-6;
+  -color-button-fg-hover: -color-fg-emphasis;
+  -color-button-border-hover: -color-danger-emphasis;
+  -color-button-bg-focused: -color-danger-emphasis;
+  -color-button-fg-focused: -color-fg-emphasis;
   -color-button-border-focused: -color-danger-emphasis;
+  -color-button-bg-pressed: -color-red-6;
+  -color-button-fg-pressed: -color-fg-emphasis;
+  -color-button-border-pressed: transparent;
 }
 .button.danger.button-outlined {
   -color-button-bg: -color-bg-default;
   -color-button-fg: -color-danger-fg;
   -color-button-bg-hover: -color-danger-emphasis;
   -color-button-fg-hover: -color-fg-emphasis;
-  -color-button-bg-focused: -color-danger-emphasis;
-  -color-button-fg-focused: -color-fg-emphasis;
-  -color-button-bg-pressed: derive(-color-danger-emphasis, -10%);
-  -color-button-fg-pressed: -color-fg-emphasis;
 }
 .button.danger.flat {
-  -color-button-fg: -color-danger-emphasis;
+  -color-button-fg: -color-danger-fg;
   -color-button-bg-hover: -color-danger-subtle;
 }
 .button.flat {
   -color-button-bg: transparent;
+  -color-button-fg: -color-fg-default;
   -color-button-border: transparent;
   -color-button-bg-hover: -color-bg-subtle;
+  -color-button-fg-hover: -color-button-fg;
   -color-button-border-hover: transparent;
-  -color-button-bg-focused: transparent;
+  -color-button-bg-focused: -color-button-bg;
+  -color-button-fg-focused: -color-button-fg;
   -color-button-border-focused: transparent;
-  -color-button-bg-pressed: transparent;
+  -color-button-bg-pressed: -color-button-bg;
+  -color-button-fg-pressed: -color-button-fg;
   -color-button-border-pressed: transparent;
 }
-.button.flat:armed, .button.flat:focused:armed {
+.button.flat:hover {
   -fx-underline: true;
 }
 
@@ -821,7 +889,7 @@ Text {
 
 .check-box {
   -fx-text-fill: -color-fg-default;
-  -fx-label-padding: 2px 2px 2px 6px;
+  -fx-label-padding: 2px 2px 0 6px;
 }
 .check-box > .box {
   -fx-background-color: -color-fg-default, -color-bg-default;
@@ -1105,10 +1173,10 @@ Text {
   -fx-graphic-text-gap: 6px;
 }
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover {
-  -fx-background-color: derive(-color-bg-default, -5%);
+  -fx-background-color: -color-gray-1;
 }
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected, .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover {
-  -fx-background-color: -color-accent-subtle;
+  -fx-background-color: -color-gray-2;
 }
 .combo-box-popup > .list-view > .placeholder > .label {
   -fx-text-fill: -color-fg-muted;
@@ -1248,9 +1316,9 @@ Text {
 .list-view {
   -color-cell-bg: -color-bg-default;
   -color-cell-fg: -color-fg-default;
-  -color-cell-bg-selected: -color-accent-subtle;
+  -color-cell-bg-selected: -color-gray-1;
   -color-cell-fg-selected: -color-fg-default;
-  -color-cell-bg-odd: -color-bg-inset;
+  -color-cell-bg-odd: -color-bg-subtle;
   -color-cell-border: -color-border-default;
   -fx-border-color: -color-cell-border;
   -fx-border-width: 1px;
@@ -1287,14 +1355,14 @@ Text {
 .table-view {
   -color-cell-bg: -color-bg-default;
   -color-cell-fg: -color-fg-default;
-  -color-cell-bg-selected: -color-accent-subtle;
+  -color-cell-bg-selected: -color-gray-1;
   -color-cell-fg-selected: -color-fg-default;
-  -color-cell-bg-odd: -color-bg-inset;
+  -color-cell-bg-odd: -color-bg-subtle;
   -color-cell-border: -color-border-default;
   -fx-border-color: -color-cell-border;
   -fx-border-width: 1px;
   -fx-border-radius: 0;
-  -color-header-bg: -color-bg-inset;
+  -color-header-bg: -color-bg-subtle;
   -color-header-fg: -color-fg-default;
 }
 .table-view > .virtual-flow > .corner {
@@ -1312,16 +1380,14 @@ Text {
   -fx-background-color: -color-cell-border, -color-header-bg;
   -fx-background-insets: 0, 0 0 1 0;
 }
-.table-view > .column-header-background .table-column {
-  -fx-border-color: -color-cell-border;
-  -fx-border-width: 0 1 1 0;
-}
 .table-view > .column-header-background .column-header {
   -fx-background-color: transparent;
   -fx-background-insets: 0;
   -fx-size: 2.2em;
   -fx-padding: 0;
   -fx-font-weight: bold;
+  -fx-border-color: -color-cell-border;
+  -fx-border-width: 0 1 1 0;
 }
 .table-view > .column-header-background .column-header .label {
   -fx-text-fill: -color-header-fg;
@@ -1374,7 +1440,6 @@ Text {
   -fx-background-color: -color-accent-muted;
 }
 .table-view .placeholder > .label {
-  -fx-background-color: -color-cell-fg;
   -fx-font-size: 1.25em;
 }
 .table-view.bordered .table-row-cell > .table-cell {
@@ -1425,9 +1490,9 @@ Text {
 .tree-view {
   -color-cell-bg: -color-bg-default;
   -color-cell-fg: -color-fg-default;
-  -color-cell-bg-selected: -color-accent-subtle;
+  -color-cell-bg-selected: -color-gray-1;
   -color-cell-fg-selected: -color-fg-default;
-  -color-cell-bg-odd: -color-bg-inset;
+  -color-cell-bg-odd: -color-bg-subtle;
   -color-cell-border: -color-border-default;
   -fx-border-color: -color-cell-border;
   -fx-border-width: 1px;
@@ -1440,6 +1505,9 @@ Text {
 .tree-view > .virtual-flow:disabled {
   -fx-opacity: 0.4;
 }
+.tree-view.dense .tree-cell {
+  -fx-padding: 0.25em 0 0.25em 0;
+}
 
 .tree-cell {
   -fx-background-color: -color-cell-bg;
@@ -1448,7 +1516,7 @@ Text {
   -fx-indent: 1em;
 }
 .tree-cell > .tree-disclosure-node {
-  -fx-padding: 4px 0.5em 4px 0.5em;
+  -fx-padding: 5px 0.5em 0 0.5em;
   -fx-background-color: transparent;
 }
 
@@ -1469,14 +1537,14 @@ Text {
 .tree-table-view {
   -color-cell-bg: -color-bg-default;
   -color-cell-fg: -color-fg-default;
-  -color-cell-bg-selected: -color-accent-subtle;
+  -color-cell-bg-selected: -color-gray-1;
   -color-cell-fg-selected: -color-fg-default;
-  -color-cell-bg-odd: -color-bg-inset;
+  -color-cell-bg-odd: -color-bg-subtle;
   -color-cell-border: -color-border-default;
   -fx-border-color: -color-cell-border;
   -fx-border-width: 1px;
   -fx-border-radius: 0;
-  -color-header-bg: -color-bg-inset;
+  -color-header-bg: -color-bg-subtle;
   -color-header-fg: -color-fg-default;
 }
 .tree-table-view > .virtual-flow > .corner {
@@ -1494,16 +1562,14 @@ Text {
   -fx-background-color: -color-cell-border, -color-header-bg;
   -fx-background-insets: 0, 0 0 1 0;
 }
-.tree-table-view > .column-header-background .table-column {
-  -fx-border-color: -color-cell-border;
-  -fx-border-width: 0 1 1 0;
-}
 .tree-table-view > .column-header-background .column-header {
   -fx-background-color: transparent;
   -fx-background-insets: 0;
   -fx-size: 2.2em;
   -fx-padding: 0;
   -fx-font-weight: bold;
+  -fx-border-color: -color-cell-border;
+  -fx-border-width: 0 1 1 0;
 }
 .tree-table-view > .column-header-background .column-header .label {
   -fx-text-fill: -color-header-fg;
@@ -1556,7 +1622,6 @@ Text {
   -fx-background-color: -color-accent-muted;
 }
 .tree-table-view .placeholder > .label {
-  -fx-background-color: -color-cell-fg;
   -fx-font-size: 1.25em;
 }
 .tree-table-view.bordered .tree-table-row-cell > .tree-table-cell {
@@ -1855,7 +1920,7 @@ Text {
   -fx-background-insets: 0;
 }
 .html-editor .toggle-button {
-  -color-button-bg-selected: derive(-color-button-bg, -10%);
+  -color-button-bg-selected: -color-gray-1;
   -color-button-border-focused: transparent;
 }
 
@@ -2018,7 +2083,7 @@ Text {
   -fx-background-color: transparent;
 }
 .menu-bar > .container > .menu-button:hover, .menu-bar > .container > .menu-button:focused, .menu-bar > .container > .menu-button:showing {
-  -fx-background-color: derive(-color-bg-subtle, -5%), derive(-color-bg-subtle, -5%);
+  -fx-background-color: -color-gray-1, -color-gray-1;
 }
 
 .menu {
@@ -2062,10 +2127,11 @@ Text {
   -fx-padding: 0 0 0 0.5em;
 }
 .menu-item:focused {
-  -fx-background-color: derive(-color-bg-default, -5%), derive(-color-bg-default, -5%);
+  -fx-background-color: -color-gray-1, -color-gray-1;
 }
 .menu-item:disabled {
   -fx-opacity: 0.4;
+  -fx-background-color: -color-bg-default;
 }
 
 .radio-menu-item:checked > .left-container > .radio,
@@ -2094,14 +2160,14 @@ Text {
   -fx-background-insets: 0, 1;
   -fx-padding: 2px 2px 2px 2px;
   -fx-background-radius: 4px;
-  -fx-effect: dropshadow(gaussian, -color-bg-inset, 2px, 0.75, 0, 0);
+  -fx-effect: dropshadow(gaussian, -color-bg-default, 2px, 0.75, 0, 0);
 }
 .context-menu > .scroll-arrow {
   -fx-padding: 0.5em;
   -fx-background-color: transparent;
 }
 .context-menu > .scroll-arrow:hover {
-  -fx-background-color: derive(-color-bg-default, -5%);
+  -fx-background-color: -color-gray-1;
   -fx-text-fill: -color-fg-default;
 }
 .context-menu .separator:horizontal {
@@ -2121,18 +2187,18 @@ Text {
 
 .menu-button,
 .split-menu-button {
-  -color-button-bg: -color-bg-inset;
+  -color-button-bg: -color-bg-subtle;
   -color-button-fg: -color-fg-default;
   -color-button-border: -color-border-default;
-  -color-button-bg-hover: derive(-color-button-bg, -5%);
+  -color-button-bg-hover: -color-gray-1;
   -color-button-fg-hover: -color-button-fg;
   -color-button-border-hover: -color-button-border;
   -color-button-bg-focused: -color-button-bg;
   -color-button-fg-focused: -color-button-fg;
   -color-button-border-focused: -color-accent-emphasis;
-  -color-button-bg-pressed: derive(-color-button-bg, -10%);
+  -color-button-bg-pressed: -color-gray-2;
   -color-button-fg-pressed: -color-button-fg;
-  -color-button-border-pressed: -color-button-border;
+  -color-button-border-pressed: transparent;
   -fx-background-color: -color-button-border, -color-button-bg;
   -fx-background-insets: 0, 1px;
   -fx-background-radius: 4px;
@@ -2292,28 +2358,20 @@ Text {
   -fx-icon-color: -color-button-fg-pressed;
   -fx-fill: -color-button-fg-pressed;
 }
-.menu-button.flat,
-.split-menu-button.flat {
-  -color-button-bg: transparent;
-  -color-button-border: transparent;
-  -color-button-bg-hover: -color-bg-subtle;
-  -color-button-border-hover: transparent;
-  -color-button-bg-focused: transparent;
-  -color-button-border-focused: transparent;
-  -color-button-bg-pressed: transparent;
-  -color-button-border-pressed: transparent;
-}
-.menu-button.flat:armed > .label, .menu-button.flat:focused:armed > .label,
-.split-menu-button.flat:armed > .label,
-.split-menu-button.flat:focused:armed > .label {
-  -fx-underline: false;
-}
 .menu-button.accent,
 .split-menu-button.accent {
   -color-button-bg: -color-accent-emphasis;
   -color-button-fg: -color-fg-emphasis;
   -color-button-border: -color-accent-emphasis;
+  -color-button-bg-hover: -color-blue-6;
+  -color-button-fg-hover: -color-fg-emphasis;
+  -color-button-border-hover: -color-accent-emphasis;
+  -color-button-bg-focused: -color-accent-emphasis;
+  -color-button-fg-focused: -color-fg-emphasis;
   -color-button-border-focused: -color-accent-emphasis;
+  -color-button-bg-pressed: -color-blue-6;
+  -color-button-fg-pressed: -color-fg-emphasis;
+  -color-button-border-pressed: transparent;
 }
 .menu-button.accent.button-outlined,
 .split-menu-button.accent.button-outlined {
@@ -2321,14 +2379,10 @@ Text {
   -color-button-fg: -color-accent-fg;
   -color-button-bg-hover: -color-accent-emphasis;
   -color-button-fg-hover: -color-fg-emphasis;
-  -color-button-bg-focused: -color-accent-emphasis;
-  -color-button-fg-focused: -color-fg-emphasis;
-  -color-button-bg-pressed: derive(-color-accent-emphasis, -10%);
-  -color-button-fg-pressed: -color-fg-emphasis;
 }
 .menu-button.accent.flat,
 .split-menu-button.accent.flat {
-  -color-button-fg: -color-accent-emphasis;
+  -color-button-fg: -color-accent-fg;
   -color-button-bg-hover: -color-accent-subtle;
 }
 .menu-button.success,
@@ -2336,7 +2390,15 @@ Text {
   -color-button-bg: -color-success-emphasis;
   -color-button-fg: -color-fg-emphasis;
   -color-button-border: -color-success-emphasis;
+  -color-button-bg-hover: -color-green-5;
+  -color-button-fg-hover: -color-fg-emphasis;
+  -color-button-border-hover: -color-success-emphasis;
+  -color-button-bg-focused: -color-success-emphasis;
+  -color-button-fg-focused: -color-fg-emphasis;
   -color-button-border-focused: -color-success-emphasis;
+  -color-button-bg-pressed: -color-green-5;
+  -color-button-fg-pressed: -color-fg-emphasis;
+  -color-button-border-pressed: transparent;
 }
 .menu-button.success.button-outlined,
 .split-menu-button.success.button-outlined {
@@ -2344,14 +2406,10 @@ Text {
   -color-button-fg: -color-success-fg;
   -color-button-bg-hover: -color-success-emphasis;
   -color-button-fg-hover: -color-fg-emphasis;
-  -color-button-bg-focused: -color-success-emphasis;
-  -color-button-fg-focused: -color-fg-emphasis;
-  -color-button-bg-pressed: derive(-color-success-emphasis, -10%);
-  -color-button-fg-pressed: -color-fg-emphasis;
 }
 .menu-button.success.flat,
 .split-menu-button.success.flat {
-  -color-button-fg: -color-success-emphasis;
+  -color-button-fg: -color-success-fg;
   -color-button-bg-hover: -color-success-subtle;
 }
 .menu-button.danger,
@@ -2359,7 +2417,15 @@ Text {
   -color-button-bg: -color-danger-emphasis;
   -color-button-fg: -color-fg-emphasis;
   -color-button-border: -color-danger-emphasis;
+  -color-button-bg-hover: -color-red-6;
+  -color-button-fg-hover: -color-fg-emphasis;
+  -color-button-border-hover: -color-danger-emphasis;
+  -color-button-bg-focused: -color-danger-emphasis;
+  -color-button-fg-focused: -color-fg-emphasis;
   -color-button-border-focused: -color-danger-emphasis;
+  -color-button-bg-pressed: -color-red-6;
+  -color-button-fg-pressed: -color-fg-emphasis;
+  -color-button-border-pressed: transparent;
 }
 .menu-button.danger.button-outlined,
 .split-menu-button.danger.button-outlined {
@@ -2367,15 +2433,26 @@ Text {
   -color-button-fg: -color-danger-fg;
   -color-button-bg-hover: -color-danger-emphasis;
   -color-button-fg-hover: -color-fg-emphasis;
-  -color-button-bg-focused: -color-danger-emphasis;
-  -color-button-fg-focused: -color-fg-emphasis;
-  -color-button-bg-pressed: derive(-color-danger-emphasis, -10%);
-  -color-button-fg-pressed: -color-fg-emphasis;
 }
 .menu-button.danger.flat,
 .split-menu-button.danger.flat {
-  -color-button-fg: -color-danger-emphasis;
+  -color-button-fg: -color-danger-fg;
   -color-button-bg-hover: -color-danger-subtle;
+}
+.menu-button.flat,
+.split-menu-button.flat {
+  -color-button-bg: transparent;
+  -color-button-fg: -color-fg-default;
+  -color-button-border: transparent;
+  -color-button-bg-hover: -color-bg-subtle;
+  -color-button-fg-hover: -color-button-fg;
+  -color-button-border-hover: transparent;
+  -color-button-bg-focused: -color-button-bg;
+  -color-button-fg-focused: -color-button-fg;
+  -color-button-border-focused: transparent;
+  -color-button-bg-pressed: -color-button-bg;
+  -color-button-fg-pressed: -color-button-fg;
+  -color-button-border-pressed: transparent;
 }
 
 .split-menu-button > .label {
@@ -2441,7 +2518,7 @@ Text {
 }
 .pagination.bullet > .pagination-control > .control-box > .bullet-button {
   -fx-background-radius: 0, 10em, 10em;
-  -fx-background-color: transparent, -color-border-default, -color-bg-inset;
+  -fx-background-color: transparent, -color-border-default, -color-bg-subtle;
   -fx-background-insets: 0, 5, 6;
 }
 .pagination.bullet > .pagination-control > .control-box > .bullet-button:selected {
@@ -2449,15 +2526,15 @@ Text {
 }
 
 .popover {
-  -fx-background-color: -color-bg-default;
+  -fx-background-color: -color-bg-overlay;
 }
 .popover > .border {
   -fx-stroke: -color-border-default;
   -fx-stroke-width: 1px;
-  -fx-effect: dropshadow(gaussian, -color-bg-inset, 2px, 0.75, 0, 0);
+  -fx-effect: dropshadow(gaussian, -color-bg-overlay, 2px, 0.75, 0, 0);
 }
 .popover > .content {
-  -fx-padding: 1em 1em 1em 1em;
+  -fx-padding: 10px 10px 10px 10px;
 }
 .popover > .content > .title {
   -fx-padding: 0 0 1em 0;
@@ -2582,7 +2659,7 @@ Text {
 .radio-button {
   -fx-background-color: -color-bg-default;
   -fx-text-fill: -color-fg-default;
-  -fx-label-padding: 2px 2px 2px 6px;
+  -fx-label-padding: 2px 2px 0 6px;
 }
 .radio-button > .radio {
   -fx-background-color: -color-fg-default, -color-bg-default;
@@ -2592,7 +2669,8 @@ Text {
   -fx-alignment: CENTER;
 }
 .radio-button > .radio > .dot {
-  -fx-background-color: transparent;
+  -fx-background-color: transparent, transparent;
+  -fx-background-insets: 0, 1px;
   -fx-background-radius: 1em;
   -fx-min-height: 0.75em;
   -fx-max-height: 0.75em;
@@ -2606,10 +2684,10 @@ Text {
   -fx-opacity: 0.4;
 }
 .radio-button:selected > .radio {
-  -fx-background-color: -color-accent-emphasis, -color-bg-default;
+  -fx-background-color: -color-accent-emphasis;
 }
 .radio-button:selected > .radio > .dot {
-  -fx-background-color: -color-accent-emphasis;
+  -fx-background-color: -color-accent-emphasis, -color-fg-emphasis;
 }
 .radio-button:show-mnemonics > .mnemonic-underline {
   -fx-stroke: -color-fg-default;
@@ -2746,13 +2824,13 @@ Text {
   -fx-padding: 7px 11px 7px 11px;
 }
 .spinner > .increment-arrow-button {
-  -fx-background-color: -color-bg-inset;
+  -fx-background-color: -color-bg-subtle;
   -fx-background-insets: 0;
   -fx-background-radius: 0 4px 0 0;
   -fx-padding: 10px;
 }
 .spinner > .increment-arrow-button:hover {
-  -fx-background-color: derive(-color-bg-inset, -5%);
+  -fx-background-color: -color-gray-2;
 }
 .spinner > .increment-arrow-button > .increment-arrow {
   -fx-background-color: -color-fg-default;
@@ -2762,13 +2840,13 @@ Text {
   -fx-scale-shape: false;
 }
 .spinner > .decrement-arrow-button {
-  -fx-background-color: -color-bg-inset;
+  -fx-background-color: -color-bg-subtle;
   -fx-background-insets: -1 0 0 0;
   -fx-background-radius: 0 0 4px 0;
   -fx-padding: 10px;
 }
 .spinner > .decrement-arrow-button:hover {
-  -fx-background-color: derive(-color-bg-inset, -5%);
+  -fx-background-color: -color-gray-2;
 }
 .spinner > .decrement-arrow-button > .decrement-arrow {
   -fx-background-color: -color-fg-default;
@@ -2910,26 +2988,18 @@ Text {
   -fx-alignment: CENTER;
 }
 .tab-pane > .tab-header-area > .tab-header-background {
-  -fx-background-color: transparent;
+  -fx-background-insets: 0 0 0 0, 0 0 2px 0;
+  -fx-background-color: -color-border-default, -color-bg-default;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab {
-  -fx-padding: 0.6em 12px 0.6em 12px;
-}
-.tab-pane > .tab-header-area > .headers-region > .tab:top {
   -fx-background-insets: 0 0 0 0, 0 0 2px 0;
-  -fx-background-color: -color-border-default, -color-bg-default;
-}
-.tab-pane > .tab-header-area > .headers-region > .tab:bottom {
-  -fx-background-insets: 0 0 0 0, 0 0 2px 0;
-  -fx-background-color: -color-border-default, -color-bg-default;
-}
-.tab-pane > .tab-header-area > .headers-region > .tab:bottom > .control-buttons-tab > .container > .tab-down-button {
-  -fx-padding: -0.25em 0.25em 0.25em 0.25em;
+  -fx-background-color: transparent, transparent;
+  -fx-padding: 0.3em 0.6em 0.3em 0.6em;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label {
   -fx-alignment: CENTER;
   -fx-text-fill: -color-fg-default;
-  -fx-padding: 0 5px 0 0;
+  -fx-padding: 0.4em 0.4em 0.4em 0.4em;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label > * {
   -fx-fill: -color-fg-default;
@@ -2944,21 +3014,21 @@ Text {
   -fx-effect: dropshadow(two-pass-box, -color-fg-default, 1, 0.125em, 0, 0);
 }
 .tab-pane > .tab-header-area > .headers-region > .tab:hover {
-  -fx-background-color: -color-border-default, -color-bg-inset;
+  -fx-background-color: -color-border-default, -color-bg-subtle;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab:top:selected, .tab-pane > .tab-header-area > .headers-region > .tab:bottom:selected {
   -fx-background-color: -color-accent-emphasis, -color-bg-default;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab:top:selected > .tab-container > .tab-label, .tab-pane > .tab-header-area > .headers-region > .tab:bottom:selected > .tab-container > .tab-label {
-  -fx-fill: -color-accent-fg;
-  -fx-text-fill: -color-accent-fg;
+  -fx-fill: -color-fg-default;
+  -fx-text-fill: -color-fg-default;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab:top:selected > .tab-container > .tab-label > *, .tab-pane > .tab-header-area > .headers-region > .tab:bottom:selected > .tab-container > .tab-label > * {
-  -fx-fill: -color-accent-fg;
-  -fx-icon-color: -color-accent-fg;
+  -fx-fill: -color-fg-default;
+  -fx-icon-color: -color-fg-default;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab:top:selected > .tab-container > .tab-close-button, .tab-pane > .tab-header-area > .headers-region > .tab:bottom:selected > .tab-container > .tab-close-button {
-  -fx-background-color: -color-accent-fg;
+  -fx-background-color: -color-fg-default;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab:disabled {
   -fx-background-color: -color-border-default, -color-bg-default;
@@ -2966,12 +3036,11 @@ Text {
 .tab-pane > .tab-header-area > .headers-region > .tab:disabled > .tab-container {
   -fx-opacity: 0.4;
 }
-.tab-pane > .tab-header-area > .headers-region > .tab:left, .tab-pane > .tab-header-area > .headers-region > .tab:right {
-  -fx-background-insets: 0;
-  -fx-background-color: transparent;
+.tab-pane > .tab-header-area > .headers-region > .tab:left > .tab-container > .tab-label, .tab-pane > .tab-header-area > .headers-region > .tab:right > .tab-container > .tab-label {
+  -fx-padding: 0.2em 0.4em 0.2em 0.4em;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab:left:hover, .tab-pane > .tab-header-area > .headers-region > .tab:right:hover {
-  -fx-background-color: -color-bg-default;
+  -fx-background-color: -color-border-default, -color-bg-subtle;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab:left:hover > .tab-container > .tab-label, .tab-pane > .tab-header-area > .headers-region > .tab:right:hover > .tab-container > .tab-label {
   -fx-text-fill: -color-fg-default;
@@ -2980,11 +3049,10 @@ Text {
   -fx-background-color: -color-fg-default;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab:left:selected, .tab-pane > .tab-header-area > .headers-region > .tab:right:selected {
-  -fx-background-color: -color-bg-inset;
+  -fx-background-color: -color-border-default, -color-gray-1;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab:left:selected > .tab-container > .tab-label, .tab-pane > .tab-header-area > .headers-region > .tab:right:selected > .tab-container > .tab-label {
   -fx-text-fill: -color-fg-default;
-  -fx-underline: true;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab:left:selected > .tab-container > .tab-close-button, .tab-pane > .tab-header-area > .headers-region > .tab:right:selected > .tab-container > .tab-close-button {
   -fx-background-color: -color-fg-default;
@@ -2992,22 +3060,17 @@ Text {
 .tab-pane > .tab-header-area > .headers-region > .tab:left:disabled, .tab-pane > .tab-header-area > .headers-region > .tab:right:disabled {
   -fx-background-color: transparent;
 }
-.tab-pane > .tab-header-area > .control-buttons-tab > .container {
-  -fx-padding: 0.25em 0 0 0;
-}
 .tab-pane > .tab-header-area > .control-buttons-tab > .container > .tab-down-button {
-  -fx-padding: 0.25em 1em 1em 0.25em;
+  -fx-padding: 1em;
+}
+.tab-pane > .tab-header-area > .control-buttons-tab > .container > .tab-down-button:disabled {
+  -fx-opacity: 0.4;
 }
 .tab-pane > .tab-header-area > .control-buttons-tab > .container > .tab-down-button > .arrow {
   -fx-shape: "M7 10l5 5 5-5z";
   -fx-scale-shape: false;
   -fx-background-color: -color-fg-default;
 }
-.tab-pane.floating > .tab-header-area {
-  -fx-background-insets: 0 0 0 0, 0 0 2px 0;
-  -fx-background-color: -color-border-default, -color-bg-default;
-}
-
 .text-input {
   -fx-background-color: -color-border-default, -color-bg-default;
   -fx-background-insets: 0, 1px;
@@ -3078,16 +3141,16 @@ Text {
   -fx-effect: none;
 }
 .titled-pane.elevated-1 {
-  -fx-effect: dropshadow(three-pass-box, -color-border-subtle, 2px, 0.5, 2, 2);
+  -fx-effect: dropshadow(three-pass-box, -color-border-default, 2px, 0.5, 2, 2);
 }
 .titled-pane.elevated-2 {
-  -fx-effect: dropshadow(three-pass-box, -color-border-subtle, 8px, 0.5, 2, 2);
+  -fx-effect: dropshadow(three-pass-box, -color-border-default, 8px, 0.5, 2, 2);
 }
 .titled-pane.elevated-3 {
-  -fx-effect: dropshadow(three-pass-box, -color-border-subtle, 16px, 0.5, 2, 2);
+  -fx-effect: dropshadow(three-pass-box, -color-border-default, 16px, 0.5, 2, 2);
 }
 .titled-pane.elevated-4 {
-  -fx-effect: dropshadow(three-pass-box, -color-border-subtle, 20px, 0.5, 2, 2);
+  -fx-effect: dropshadow(three-pass-box, -color-border-default, 20px, 0.5, 2, 2);
 }
 .titled-pane > .title {
   -fx-background-color: -color-border-default, -color-bg-default;
@@ -3117,7 +3180,8 @@ Text {
   -fx-padding: 20px 20px 10px 20px;
   -fx-alignment: TOP_LEFT;
 }
-.titled-pane:disabled {
+.titled-pane:disabled > .title > *,
+.titled-pane:disabled > .content > * {
   -fx-opacity: 0.4;
 }
 .titled-pane:expanded > .title {
@@ -3129,25 +3193,25 @@ Text {
   -fx-background-radius: 4px;
 }
 .titled-pane.interactive:hover {
-  -fx-effect: dropshadow(three-pass-box, -color-border-subtle, 8px, 0.5, 2, 2);
+  -fx-effect: dropshadow(three-pass-box, -color-border-default, 8px, 0.5, 2, 2);
 }
 .titled-pane:show-mnemonics > .mnemonic-underline {
   -fx-stroke: -color-fg-default;
 }
 
 .toggle-button {
-  -color-button-bg: -color-bg-inset;
+  -color-button-bg: -color-bg-subtle;
   -color-button-fg: -color-fg-default;
   -color-button-border: -color-border-default;
-  -color-button-bg-hover: derive(-color-button-bg, -5%);
+  -color-button-bg-hover: -color-gray-1;
   -color-button-fg-hover: -color-button-fg;
   -color-button-border-hover: -color-button-border;
   -color-button-bg-focused: -color-button-bg;
   -color-button-fg-focused: -color-button-fg;
   -color-button-border-focused: -color-accent-emphasis;
-  -color-button-bg-pressed: derive(-color-button-bg, -10%);
+  -color-button-bg-pressed: -color-gray-2;
   -color-button-fg-pressed: -color-button-fg;
-  -color-button-border-pressed: -color-button-border;
+  -color-button-border-pressed: transparent;
   -fx-background-color: -color-button-border, -color-button-bg;
   -fx-background-insets: 0, 1px;
   -fx-background-radius: 4px;
@@ -3262,7 +3326,7 @@ Text {
 .tool-bar {
   -fx-background-color: -color-border-muted, -color-bg-subtle;
   -fx-background-insets: 0, 0 0 1px 0;
-  -fx-padding: 4px 12px 4px 12px;
+  -fx-padding: 4px 0.3em 4px 0.3em;
   -fx-spacing: 4px;
   -fx-alignment: CENTER_LEFT;
 }
@@ -3274,7 +3338,7 @@ Text {
 }
 .tool-bar > .container .toggle-button {
   -color-button-bg: -color-bg-subtle;
-  -color-button-bg-selected: derive(-color-bg-subtle, -10%);
+  -color-button-bg-selected: -color-gray-2;
   -color-button-fg-selected: -color-fg-default;
   -fx-background-insets: 0;
 }
@@ -3282,7 +3346,7 @@ Text {
   -fx-orientation: vertical;
 }
 .tool-bar > .tool-bar-overflow-button {
-  -fx-padding: 0 12px 0 4px;
+  -fx-padding: 0 0.3em 0 4px;
 }
 .tool-bar > .tool-bar-overflow-button > .arrow {
   -fx-shape: "M5.06 5 4 6.06 7.94 10 4 13.94 5.06 15l5-5z M11 5 9.94 6.06 13.88 10l-3.94 3.94L11 15l5-5z";
@@ -3291,14 +3355,14 @@ Text {
 }
 .tool-bar:vertical {
   -fx-background-insets: 0, 0 1px 0 0;
-  -fx-padding: 12px 4px 12px 4px;
+  -fx-padding: 0.3em 4px 0.3em 4px;
   -fx-alignment: TOP_LEFT;
 }
 .tool-bar:vertical > .container > .separator {
   -fx-orientation: horizontal;
 }
 .tool-bar:vertical > .tool-bar-overflow-button {
-  -fx-padding: 4px 0 12px 0;
+  -fx-padding: 4px 0 0.3em 0;
 }
 .tool-bar:vertical.right {
   -fx-background-insets: 0, 0 0 0 1px;
@@ -3308,11 +3372,11 @@ Text {
 }
 
 .tooltip {
-  -fx-background-color: -color-neutral-emphasis-plus;
-  -fx-background-insets: 0;
-  -fx-text-fill: -color-fg-emphasis;
+  -fx-background-color: -color-border-default, -color-bg-overlay;
+  -fx-background-insets: 0, 1px;
+  -fx-text-fill: -color-fg-default;
   -fx-background-radius: 4px;
   -fx-padding: 8px 12px 8px 12px;
   -fx-opacity: 0.85;
-  -fx-effect: dropshadow(gaussian, -color-bg-inset, 8, 0.75, 0, 0);
+  -fx-effect: dropshadow(gaussian, -color-bg-overlay, 2px, 0.75, 0, 0);
 }

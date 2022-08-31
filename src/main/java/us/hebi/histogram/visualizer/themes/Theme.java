@@ -7,8 +7,10 @@ import javafx.application.Application;
  * @since 24 Aug 2022
  */
 public enum Theme {
-    Light("primer-light.css"),
-    Dark("primer-dark.css");
+    PrimerLight("primer-light.css"),
+    PrimerDark("primer-dark.css"),
+    NordLight("nord-light.css"),
+    NordDark("nord-dark.css");
 
     private Theme(String resource) {
         userAgentStyleSheet = Theme.class.getResource(resource).toExternalForm();
@@ -19,6 +21,6 @@ public enum Theme {
     }
 
     private final String userAgentStyleSheet;
-    public static final Theme DEFAULT = Dark;
+    public static final Theme DEFAULT = NordLight;
 
 }

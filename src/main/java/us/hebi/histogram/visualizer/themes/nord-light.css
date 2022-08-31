@@ -1,87 +1,87 @@
 .root {
-  -color-black: #010409;
-  -color-white: #ffffff;
-  -color-gray-0: #f0f6fc;
-  -color-gray-1: #c9d1d9;
-  -color-gray-2: #b1bac4;
-  -color-gray-3: #8b949e;
-  -color-gray-4: #6e7681;
-  -color-gray-5: #484f58;
-  -color-gray-6: #30363d;
-  -color-gray-7: #21262d;
-  -color-gray-8: #161b22;
-  -color-gray-9: #0d1117;
-  -color-blue-0: #cae8ff;
-  -color-blue-1: #a5d6ff;
-  -color-blue-2: #79c0ff;
-  -color-blue-3: #58a6ff;
-  -color-blue-4: #388bfd;
-  -color-blue-5: #1f6feb;
-  -color-blue-6: #1158c7;
-  -color-blue-7: #0d419d;
-  -color-blue-8: #0c2d6b;
-  -color-blue-9: #051d4d;
-  -color-green-0: #aff5b4;
-  -color-green-1: #7ee787;
-  -color-green-2: #56d364;
-  -color-green-3: #3fb950;
-  -color-green-4: #2ea043;
-  -color-green-5: #238636;
-  -color-green-6: #196c2e;
-  -color-green-7: #0f5323;
-  -color-green-8: #033a16;
-  -color-green-9: #04260f;
-  -color-yellow-0: #f8e3a1;
-  -color-yellow-1: #f2cc60;
-  -color-yellow-2: #e3b341;
-  -color-yellow-3: #d29922;
-  -color-yellow-4: #bb8009;
-  -color-yellow-5: #9e6a03;
-  -color-yellow-6: #845306;
-  -color-yellow-7: #693e00;
-  -color-yellow-8: #4b2900;
-  -color-yellow-9: #341a00;
-  -color-red-0: #ffdcd7;
-  -color-red-1: #ffc1ba;
-  -color-red-2: #ffa198;
-  -color-red-3: #ff7b72;
-  -color-red-4: #f85149;
-  -color-red-5: #da3633;
-  -color-red-6: #b62324;
-  -color-red-7: #8e1519;
-  -color-red-8: #67060c;
-  -color-red-9: #490202;
-  -color-fg-default: #c9d1d9;
-  -color-fg-muted: #8b949e;
-  -color-fg-subtle: #6e7681;
-  -color-fg-emphasis: #ffffff;
-  -color-bg-default: #0d1117;
-  -color-bg-overlay: #161b22;
-  -color-bg-subtle: #161b22;
-  -color-bg-inset: #010409;
-  -color-border-default: #30363d;
-  -color-border-muted: #21262d;
-  -color-border-subtle: rgba(240, 246, 252, 0.1);
-  -color-neutral-emphasis-plus: #6e7681;
-  -color-neutral-emphasis: #6e7681;
-  -color-neutral-muted: rgba(110, 118, 129, 0.4);
-  -color-neutral-subtle: rgba(110, 118, 129, 0.1);
-  -color-accent-fg: #58a6ff;
-  -color-accent-emphasis: #1f6feb;
-  -color-accent-muted: rgba(56, 139, 253, 0.4);
-  -color-accent-subtle: rgba(56, 139, 253, 0.15);
-  -color-warning-fg: #d29922;
-  -color-warning-emphasis: #9e6a03;
-  -color-warning-muted: rgba(187, 128, 9, 0.4);
-  -color-warning-subtle: rgba(187, 128, 9, 0.15);
-  -color-success-fg: #3fb950;
-  -color-success-emphasis: #238636;
-  -color-success-muted: rgba(46, 160, 67, 0.4);
-  -color-success-subtle: rgba(46, 160, 67, 0.15);
-  -color-danger-fg: #f85149;
-  -color-danger-emphasis: #da3633;
-  -color-danger-muted: rgba(248, 81, 73, 0.4);
-  -color-danger-subtle: rgba(248, 81, 73, 0.15);
+  -color-black: #20242d;
+  -color-white: #f4f5f8;
+  -color-gray-0: #ECEFF4;
+  -color-gray-1: #E5E9F0;
+  -color-gray-2: #D8DEE9;
+  -color-gray-3: #c2c8d2;
+  -color-gray-4: #8B919E;
+  -color-gray-5: #707888;
+  -color-gray-6: #4C566A;
+  -color-gray-7: #434C5E;
+  -color-gray-8: #3B4252;
+  -color-gray-9: #2E3440;
+  -color-blue-0: #e3eaf1;
+  -color-blue-1: #d5e0ea;
+  -color-blue-2: #b9cbdd;
+  -color-blue-3: #9db6cf;
+  -color-blue-4: #81A1C1;
+  -color-blue-5: #5E81AC;
+  -color-blue-6: #647d96;
+  -color-blue-7: #48596b;
+  -color-blue-8: #394856;
+  -color-blue-9: #2b3640;
+  -color-green-0: #dae5d1;
+  -color-green-1: #d1dfc6;
+  -color-green-2: #bfd2af;
+  -color-green-3: #b5cba3;
+  -color-green-4: #A3BE8C;
+  -color-green-5: #93ab7e;
+  -color-green-6: #829870;
+  -color-green-7: #728562;
+  -color-green-8: #525f46;
+  -color-green-9: #31392a;
+  -color-yellow-0: #f7ead1;
+  -color-yellow-1: #f5e5c5;
+  -color-yellow-2: #f1dbae;
+  -color-yellow-3: #efd5a2;
+  -color-yellow-4: #EBCB8B;
+  -color-yellow-5: #d4b77d;
+  -color-yellow-6: #bca26f;
+  -color-yellow-7: #8d7a53;
+  -color-yellow-8: #766646;
+  -color-yellow-9: #463d2a;
+  -color-red-0: #ecd0d2;
+  -color-red-1: #dfb0b5;
+  -color-red-2: #d29097;
+  -color-red-3: #c57179;
+  -color-red-4: #BF616A;
+  -color-red-5: #994e55;
+  -color-red-6: #86444a;
+  -color-red-7: #733a40;
+  -color-red-8: #603135;
+  -color-red-9: #391d20;
+  -color-fg-default: #2E3440;
+  -color-fg-muted: #4C566A;
+  -color-fg-subtle: #707888;
+  -color-fg-emphasis: #f4f5f8;
+  -color-bg-default: #f4f5f8;
+  -color-bg-overlay: #f4f5f8;
+  -color-bg-subtle: #ECEFF4;
+  -color-bg-inset: #ECEFF4;
+  -color-border-default: #c2c8d2;
+  -color-border-muted: #d8dee9;
+  -color-border-subtle: rgba(32, 36, 45, 0.15);
+  -color-neutral-emphasis-plus: #3B4252;
+  -color-neutral-emphasis: #707888;
+  -color-neutral-muted: rgba(194, 200, 210, 0.2);
+  -color-neutral-subtle: rgba(229, 233, 240, 0.5);
+  -color-accent-fg: #5E81AC;
+  -color-accent-emphasis: #5E81AC;
+  -color-accent-muted: rgba(157, 182, 207, 0.4);
+  -color-accent-subtle: rgba(157, 182, 207, 0.15);
+  -color-warning-fg: #8d7a53;
+  -color-warning-emphasis: #d4b77d;
+  -color-warning-muted: rgba(235, 203, 139, 0.4);
+  -color-warning-subtle: rgba(235, 203, 139, 0.15);
+  -color-success-fg: #829870;
+  -color-success-emphasis: #93ab7e;
+  -color-success-muted: rgba(163, 190, 140, 0.4);
+  -color-success-subtle: rgba(163, 190, 140, 0.15);
+  -color-danger-fg: #994e55;
+  -color-danger-emphasis: #994e55;
+  -color-danger-muted: rgba(191, 97, 106, 0.4);
+  -color-danger-subtle: rgba(191, 97, 106, 0.15);
   -color-chart-1: #f3622d;
   -color-chart-2: #fba71b;
   -color-chart-3: #57b757;
@@ -241,13 +241,13 @@ Text {
   -color-button-bg: -color-bg-subtle;
   -color-button-fg: -color-fg-default;
   -color-button-border: -color-border-default;
-  -color-button-bg-hover: -color-gray-6;
+  -color-button-bg-hover: -color-gray-1;
   -color-button-fg-hover: -color-button-fg;
   -color-button-border-hover: -color-button-border;
   -color-button-bg-focused: -color-button-bg;
   -color-button-fg-focused: -color-button-fg;
   -color-button-border-focused: -color-accent-emphasis;
-  -color-button-bg-pressed: -color-gray-7;
+  -color-button-bg-pressed: -color-gray-2;
   -color-button-fg-pressed: -color-button-fg;
   -color-button-border-pressed: transparent;
   -fx-background-color: -color-button-border, -color-button-bg;
@@ -1173,10 +1173,10 @@ Text {
   -fx-graphic-text-gap: 6px;
 }
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover {
-  -fx-background-color: -color-gray-7;
+  -fx-background-color: -color-gray-1;
 }
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected, .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover {
-  -fx-background-color: -color-gray-6;
+  -fx-background-color: -color-gray-2;
 }
 .combo-box-popup > .list-view > .placeholder > .label {
   -fx-text-fill: -color-fg-muted;
@@ -1316,7 +1316,7 @@ Text {
 .list-view {
   -color-cell-bg: -color-bg-default;
   -color-cell-fg: -color-fg-default;
-  -color-cell-bg-selected: -color-gray-6;
+  -color-cell-bg-selected: -color-gray-1;
   -color-cell-fg-selected: -color-fg-default;
   -color-cell-bg-odd: -color-bg-subtle;
   -color-cell-border: -color-border-default;
@@ -1355,7 +1355,7 @@ Text {
 .table-view {
   -color-cell-bg: -color-bg-default;
   -color-cell-fg: -color-fg-default;
-  -color-cell-bg-selected: -color-gray-6;
+  -color-cell-bg-selected: -color-gray-1;
   -color-cell-fg-selected: -color-fg-default;
   -color-cell-bg-odd: -color-bg-subtle;
   -color-cell-border: -color-border-default;
@@ -1490,7 +1490,7 @@ Text {
 .tree-view {
   -color-cell-bg: -color-bg-default;
   -color-cell-fg: -color-fg-default;
-  -color-cell-bg-selected: -color-gray-6;
+  -color-cell-bg-selected: -color-gray-1;
   -color-cell-fg-selected: -color-fg-default;
   -color-cell-bg-odd: -color-bg-subtle;
   -color-cell-border: -color-border-default;
@@ -1537,7 +1537,7 @@ Text {
 .tree-table-view {
   -color-cell-bg: -color-bg-default;
   -color-cell-fg: -color-fg-default;
-  -color-cell-bg-selected: -color-gray-6;
+  -color-cell-bg-selected: -color-gray-1;
   -color-cell-fg-selected: -color-fg-default;
   -color-cell-bg-odd: -color-bg-subtle;
   -color-cell-border: -color-border-default;
@@ -1920,7 +1920,7 @@ Text {
   -fx-background-insets: 0;
 }
 .html-editor .toggle-button {
-  -color-button-bg-selected: -color-gray-6;
+  -color-button-bg-selected: -color-gray-1;
   -color-button-border-focused: transparent;
 }
 
@@ -2083,7 +2083,7 @@ Text {
   -fx-background-color: transparent;
 }
 .menu-bar > .container > .menu-button:hover, .menu-bar > .container > .menu-button:focused, .menu-bar > .container > .menu-button:showing {
-  -fx-background-color: -color-gray-6, -color-gray-6;
+  -fx-background-color: -color-gray-1, -color-gray-1;
 }
 
 .menu {
@@ -2127,7 +2127,7 @@ Text {
   -fx-padding: 0 0 0 0.5em;
 }
 .menu-item:focused {
-  -fx-background-color: -color-gray-7, -color-gray-7;
+  -fx-background-color: -color-gray-1, -color-gray-1;
 }
 .menu-item:disabled {
   -fx-opacity: 0.4;
@@ -2167,7 +2167,7 @@ Text {
   -fx-background-color: transparent;
 }
 .context-menu > .scroll-arrow:hover {
-  -fx-background-color: -color-gray-7;
+  -fx-background-color: -color-gray-1;
   -fx-text-fill: -color-fg-default;
 }
 .context-menu .separator:horizontal {
@@ -2190,13 +2190,13 @@ Text {
   -color-button-bg: -color-bg-subtle;
   -color-button-fg: -color-fg-default;
   -color-button-border: -color-border-default;
-  -color-button-bg-hover: -color-gray-6;
+  -color-button-bg-hover: -color-gray-1;
   -color-button-fg-hover: -color-button-fg;
   -color-button-border-hover: -color-button-border;
   -color-button-bg-focused: -color-button-bg;
   -color-button-fg-focused: -color-button-fg;
   -color-button-border-focused: -color-accent-emphasis;
-  -color-button-bg-pressed: -color-gray-7;
+  -color-button-bg-pressed: -color-gray-2;
   -color-button-fg-pressed: -color-button-fg;
   -color-button-border-pressed: transparent;
   -fx-background-color: -color-button-border, -color-button-bg;
@@ -2782,7 +2782,7 @@ Text {
 }
 
 .slider > .thumb {
-  -fx-background-color: -color-fg-default, -color-fg-default;
+  -fx-background-color: -color-accent-emphasis, -color-bg-default;
   -fx-background-insets: 0, 2px;
   -fx-background-radius: 50;
   -fx-padding: 8px;
@@ -2830,7 +2830,7 @@ Text {
   -fx-padding: 10px;
 }
 .spinner > .increment-arrow-button:hover {
-  -fx-background-color: -color-gray-6;
+  -fx-background-color: -color-gray-2;
 }
 .spinner > .increment-arrow-button > .increment-arrow {
   -fx-background-color: -color-fg-default;
@@ -2846,7 +2846,7 @@ Text {
   -fx-padding: 10px;
 }
 .spinner > .decrement-arrow-button:hover {
-  -fx-background-color: -color-gray-6;
+  -fx-background-color: -color-gray-2;
 }
 .spinner > .decrement-arrow-button > .decrement-arrow {
   -fx-background-color: -color-fg-default;
@@ -3049,7 +3049,7 @@ Text {
   -fx-background-color: -color-fg-default;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab:left:selected, .tab-pane > .tab-header-area > .headers-region > .tab:right:selected {
-  -fx-background-color: -color-border-default, -color-gray-7;
+  -fx-background-color: -color-border-default, -color-gray-1;
 }
 .tab-pane > .tab-header-area > .headers-region > .tab:left:selected > .tab-container > .tab-label, .tab-pane > .tab-header-area > .headers-region > .tab:right:selected > .tab-container > .tab-label {
   -fx-text-fill: -color-fg-default;
@@ -3141,16 +3141,16 @@ Text {
   -fx-effect: none;
 }
 .titled-pane.elevated-1 {
-  -fx-effect: dropshadow(three-pass-box, -color-bg-inset, 2px, 0.5, 2, 2);
+  -fx-effect: dropshadow(three-pass-box, -color-border-default, 2px, 0.5, 2, 2);
 }
 .titled-pane.elevated-2 {
-  -fx-effect: dropshadow(three-pass-box, -color-bg-inset, 8px, 0.5, 2, 2);
+  -fx-effect: dropshadow(three-pass-box, -color-border-default, 8px, 0.5, 2, 2);
 }
 .titled-pane.elevated-3 {
-  -fx-effect: dropshadow(three-pass-box, -color-bg-inset, 16px, 0.5, 2, 2);
+  -fx-effect: dropshadow(three-pass-box, -color-border-default, 16px, 0.5, 2, 2);
 }
 .titled-pane.elevated-4 {
-  -fx-effect: dropshadow(three-pass-box, -color-bg-inset, 20px, 0.5, 2, 2);
+  -fx-effect: dropshadow(three-pass-box, -color-border-default, 20px, 0.5, 2, 2);
 }
 .titled-pane > .title {
   -fx-background-color: -color-border-default, -color-bg-default;
@@ -3193,7 +3193,7 @@ Text {
   -fx-background-radius: 4px;
 }
 .titled-pane.interactive:hover {
-  -fx-effect: dropshadow(three-pass-box, -color-bg-inset, 8px, 0.5, 2, 2);
+  -fx-effect: dropshadow(three-pass-box, -color-border-default, 8px, 0.5, 2, 2);
 }
 .titled-pane:show-mnemonics > .mnemonic-underline {
   -fx-stroke: -color-fg-default;
@@ -3203,13 +3203,13 @@ Text {
   -color-button-bg: -color-bg-subtle;
   -color-button-fg: -color-fg-default;
   -color-button-border: -color-border-default;
-  -color-button-bg-hover: -color-gray-6;
+  -color-button-bg-hover: -color-gray-1;
   -color-button-fg-hover: -color-button-fg;
   -color-button-border-hover: -color-button-border;
   -color-button-bg-focused: -color-button-bg;
   -color-button-fg-focused: -color-button-fg;
   -color-button-border-focused: -color-accent-emphasis;
-  -color-button-bg-pressed: -color-gray-7;
+  -color-button-bg-pressed: -color-gray-2;
   -color-button-fg-pressed: -color-button-fg;
   -color-button-border-pressed: transparent;
   -fx-background-color: -color-button-border, -color-button-bg;
@@ -3338,7 +3338,7 @@ Text {
 }
 .tool-bar > .container .toggle-button {
   -color-button-bg: -color-bg-subtle;
-  -color-button-bg-selected: -color-gray-6;
+  -color-button-bg-selected: -color-gray-2;
   -color-button-fg-selected: -color-fg-default;
   -fx-background-insets: 0;
 }
